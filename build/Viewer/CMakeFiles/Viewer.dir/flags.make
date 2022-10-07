@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG   -DTRUE=1 -DFALSE=0 -fPIC -std=gnu++14
 
 CXX_DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_XML_LIB
 
-CXX_INCLUDES = -I/home/cunha/Desktop/ciberRatoTools/build/Viewer/Viewer_autogen/include -I/home/cunha/Desktop/ciberRatoTools/Viewer -I/home/cunha/Desktop/ciberRatoTools/build/Viewer -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtMultimedia 
+CXX_INCLUDES = -I/home/cunha/Desktop/RMI-22-23/build/Viewer/Viewer_autogen/include -I/home/cunha/Desktop/RMI-22-23/Viewer -I/home/cunha/Desktop/RMI-22-23/build/Viewer -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtMultimedia 
 

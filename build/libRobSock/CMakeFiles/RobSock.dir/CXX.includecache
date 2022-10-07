@@ -64,19 +64,19 @@ cmeasures.h
 iostream
 -
 
-/home/cunha/Desktop/ciberRatoTools/build/libRobSock/RobSock_autogen/EWIEGA46WW/moc_croblink.cpp
+/home/cunha/Desktop/RMI-22-23/build/libRobSock/RobSock_autogen/EWIEGA46WW/moc_croblink.cpp
 croblink.h
-/home/cunha/Desktop/ciberRatoTools/build/libRobSock/RobSock_autogen/EWIEGA46WW/croblink.h
+/home/cunha/Desktop/RMI-22-23/build/libRobSock/RobSock_autogen/EWIEGA46WW/croblink.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/build/libRobSock/RobSock_autogen/mocs_compilation.cpp
+/home/cunha/Desktop/RMI-22-23/build/libRobSock/RobSock_autogen/mocs_compilation.cpp
 EWIEGA46WW/moc_croblink.cpp
-/home/cunha/Desktop/ciberRatoTools/build/libRobSock/RobSock_autogen/EWIEGA46WW/moc_croblink.cpp
+/home/cunha/Desktop/RMI-22-23/build/libRobSock/RobSock_autogen/EWIEGA46WW/moc_croblink.cpp
 
-/home/cunha/Desktop/ciberRatoTools/libRobSock/RobSock.cpp
+/home/cunha/Desktop/RMI-22-23/libRobSock/RobSock.cpp
 assert.h
 -
 iostream
@@ -86,33 +86,33 @@ stdarg.h
 locale.h
 -
 RobSock.h
-/home/cunha/Desktop/ciberRatoTools/libRobSock/RobSock.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/RobSock.h
 croblink.h
-/home/cunha/Desktop/ciberRatoTools/libRobSock/croblink.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/croblink.h
 
-/home/cunha/Desktop/ciberRatoTools/libRobSock/RobSock.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/RobSock.h
 qapplication.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/libRobSock/cmeasures.cpp
+/home/cunha/Desktop/RMI-22-23/libRobSock/cmeasures.cpp
 cmeasures.h
-/home/cunha/Desktop/ciberRatoTools/libRobSock/cmeasures.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/cmeasures.h
 iostream
 -
 
-/home/cunha/Desktop/ciberRatoTools/libRobSock/cmeasures.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/cmeasures.h
 RobSock.h
-/home/cunha/Desktop/ciberRatoTools/libRobSock/RobSock.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/RobSock.h
 vector
 -
 QString
 -
 
-/home/cunha/Desktop/ciberRatoTools/libRobSock/croblink.cpp
+/home/cunha/Desktop/RMI-22-23/libRobSock/croblink.cpp
 croblink.h
-/home/cunha/Desktop/ciberRatoTools/libRobSock/croblink.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/croblink.h
 structureparser.h
-/home/cunha/Desktop/ciberRatoTools/libRobSock/structureparser.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/structureparser.h
 iostream
 -
 qsocketnotifier.h
@@ -120,7 +120,7 @@ qsocketnotifier.h
 qxml.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/libRobSock/croblink.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/croblink.h
 qobject.h
 -
 assert.h
@@ -128,27 +128,27 @@ assert.h
 stdarg.h
 -
 cmeasures.h
-/home/cunha/Desktop/ciberRatoTools/libRobSock/cmeasures.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/cmeasures.h
 csimparam.h
-/home/cunha/Desktop/ciberRatoTools/libRobSock/csimparam.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/csimparam.h
 netif.h
-/home/cunha/Desktop/ciberRatoTools/libRobSock/netif.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/netif.h
 structureparser.h
-/home/cunha/Desktop/ciberRatoTools/libRobSock/structureparser.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/structureparser.h
 iostream
 -
 
-/home/cunha/Desktop/ciberRatoTools/libRobSock/csimparam.cpp
+/home/cunha/Desktop/RMI-22-23/libRobSock/csimparam.cpp
 csimparam.h
-/home/cunha/Desktop/ciberRatoTools/libRobSock/csimparam.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/csimparam.h
 iostream
 -
 math.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/libRobSock/csimparam.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/csimparam.h
 
-/home/cunha/Desktop/ciberRatoTools/libRobSock/netif.cpp
+/home/cunha/Desktop/RMI-22-23/libRobSock/netif.cpp
 stdio.h
 -
 iostream
@@ -160,9 +160,9 @@ string.h
 unistd.h
 -
 netif.h
-/home/cunha/Desktop/ciberRatoTools/libRobSock/netif.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/netif.h
 
-/home/cunha/Desktop/ciberRatoTools/libRobSock/netif.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/netif.h
 sys/socket.h
 -
 sys/ioctl.h
@@ -178,21 +178,21 @@ fcntl.h
 WinSock2.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/libRobSock/structureparser.cpp
+/home/cunha/Desktop/RMI-22-23/libRobSock/structureparser.cpp
 structureparser.h
-/home/cunha/Desktop/ciberRatoTools/libRobSock/structureparser.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/structureparser.h
 iostream
 -
 qstring.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/libRobSock/structureparser.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/structureparser.h
 qxml.h
 -
 csimparam.h
-/home/cunha/Desktop/ciberRatoTools/libRobSock/csimparam.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/csimparam.h
 cmeasures.h
-/home/cunha/Desktop/ciberRatoTools/libRobSock/cmeasures.h
+/home/cunha/Desktop/RMI-22-23/libRobSock/cmeasures.h
 iostream
 -
 

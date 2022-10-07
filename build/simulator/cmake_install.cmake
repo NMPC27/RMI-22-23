@@ -1,4 +1,4 @@
-# Install script for directory: /home/cunha/Desktop/ciberRatoTools/simulator
+# Install script for directory: /home/cunha/Desktop/RMI-22-23/simulator
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

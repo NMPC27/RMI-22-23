@@ -1,5 +1,6 @@
 
 import sys
+from typing import Counter
 from croblink import *
 from math import *
 import xml.etree.ElementTree as ET
@@ -10,6 +11,8 @@ CELLCOLS=14
 class MyRob(CRobLinkAngs):
     def __init__(self, rob_name, rob_id, angles, host):
         CRobLinkAngs.__init__(self, rob_name, rob_id, angles, host)
+        self.counter=0
+        self.right=0
 
     # In this map the center of cell (i,j), (i in 0..6, j in 0..13) is mapped to labMap[i*2][j*2].
     # to know if there is a wall on top of cell(i,j) (i in 0..5), check if the value of labMap[i*2+1][j*2] is space or not
@@ -64,25 +67,40 @@ class MyRob(CRobLinkAngs):
             
 
     def wander(self):
-        center_id = 0
-        left_id = 1
-        right_id = 2
-        back_id = 3
-        if    self.measures.irSensor[center_id] > 5.0\
-           or self.measures.irSensor[left_id]   > 5.0\
-           or self.measures.irSensor[right_id]  > 5.0\
-           or self.measures.irSensor[back_id]   > 5.0:
-            print('Rotate left')
-            self.driveMotors(-0.1,+0.1)
-        elif self.measures.irSensor[left_id]> 2.7:
-            print('Rotate slowly right')
-            self.driveMotors(0.1,0.0)
-        elif self.measures.irSensor[right_id]> 2.7:
-            print('Rotate slowly left')
+
+        print('|'+''.join(self.measures.lineSensor).replace('1','█').replace('0',' ')+'|')
+
+
+
+        if self.measures.lineSensor[6]=='1' and self.measures.lineSensor[5]=='1':
+            self.driveMotors(0.15,-0.15)
+            print("right")
+
+        elif self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1':
+            self.driveMotors(-0.15,0.15)
+            print("left")
+
+        elif self.measures.lineSensor[1]=='1' and self.measures.lineSensor[2]=='1':
             self.driveMotors(0.0,0.1)
+            print("adjust left")
+
+        elif self.measures.lineSensor[4]=='1' and self.measures.lineSensor[5]=='1':
+            self.driveMotors(0.1,0.0)
+            print("adjust right")
+        
+        elif self.measures.lineSensor[6]=='1':
+            self.driveMotors(0.15,-0.15)
+            print("right, resort")
+
+        elif self.measures.lineSensor[0]=='1':
+            self.driveMotors(-0.15,0.15)
+            print("left, resort ")
         else:
-            print('Go')
-            self.driveMotors(0.1,0.1)
+            self.driveMotors(0.15,0.15)
+
+        
+
+
 
 class Map():
     def __init__(self, filename):

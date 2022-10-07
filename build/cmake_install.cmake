@@ -1,4 +1,4 @@
-# Install script for directory: /home/cunha/Desktop/ciberRatoTools
+# Install script for directory: /home/cunha/Desktop/RMI-22-23
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,12 +39,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/cunha/Desktop/ciberRatoTools/build/simulator/cmake_install.cmake")
-  include("/home/cunha/Desktop/ciberRatoTools/build/Viewer/cmake_install.cmake")
-  include("/home/cunha/Desktop/ciberRatoTools/build/libRobSock/cmake_install.cmake")
-  include("/home/cunha/Desktop/ciberRatoTools/build/logplayer/cmake_install.cmake")
-  include("/home/cunha/Desktop/ciberRatoTools/build/robsample/cmake_install.cmake")
-  include("/home/cunha/Desktop/ciberRatoTools/build/GUISample/cmake_install.cmake")
+  include("/home/cunha/Desktop/RMI-22-23/build/simulator/cmake_install.cmake")
+  include("/home/cunha/Desktop/RMI-22-23/build/Viewer/cmake_install.cmake")
+  include("/home/cunha/Desktop/RMI-22-23/build/libRobSock/cmake_install.cmake")
+  include("/home/cunha/Desktop/RMI-22-23/build/logplayer/cmake_install.cmake")
+  include("/home/cunha/Desktop/RMI-22-23/build/robsample/cmake_install.cmake")
+  include("/home/cunha/Desktop/RMI-22-23/build/GUISample/cmake_install.cmake")
 
 endif()
 
@@ -56,5 +56,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/cunha/Desktop/ciberRatoTools/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/cunha/Desktop/RMI-22-23/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

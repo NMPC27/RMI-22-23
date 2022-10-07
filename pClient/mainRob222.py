@@ -14,6 +14,8 @@ class MyRob(CRobLinkAngs):
         self.counter=0
         self.right=0
         self.direction=0
+        #if it goes to the first if, it wont go to the second one
+        self.Turn_to_0=1
 
     # In this map the center of cell (i,j), (i in 0..6, j in 0..13) is mapped to labMap[i*2][j*2].
     # to know if there is a wall on top of cell(i,j) (i in 0..5), check if the value of labMap[i*2+1][j*2] is space or not
@@ -69,9 +71,12 @@ class MyRob(CRobLinkAngs):
 
     def wander(self):
 
-        #print('|'+''.join(self.measures.lineSensor).replace('1','█').replace('0',' ')+'|')
+        print('|'+''.join(self.measures.lineSensor).replace('1','█').replace('0',' ')+'|')
 
-        print(self.measures.compass)
+        
+        compass=self.measures.compass+180
+        #print(str(compass)+'     '+str(self.counter))
+
         #print(self.measures.x,self.measures.y)
 
         if self.counter>0:
@@ -79,39 +84,54 @@ class MyRob(CRobLinkAngs):
             
 
             if self.right==1:
-                #if self.direction>=80 and self.direction<=180 and self.measures.compass>-180:
-                #    self.driveMotors(0.1,0.0)
-                    
-                if self.measures.compass> self.direction-90:
-                
+                if self.direction>=80 and self.direction<=100 and compass<350:
                     self.driveMotors(0.1,0.0)
+                    self.Turn_to_0=0
+                    print("turn right to 0")
+                elif (self.direction>=350 or self.direction<=10) and compass>270:
+                    self.driveMotors(0.1,0.0)
+                    self.Turn_to_0=0
+                    
+                elif compass> self.direction-90 and self.Turn_to_0:
+                    self.driveMotors(0.1,0.0)
+                    print("TURN LEFT")
                 else:
                     self.counter=0
+                    self.Turn_to_0=1
             else:
-                #if self.direction<=-170 and self.direction>=-90 and self.measures.compass<90:
-                 #   self.driveMotors(0.1,0.0)
-
-                if self.measures.compass< self.direction+90:
+                if self.direction>=260 and self.direction<=280 and compass>10:
                     self.driveMotors(0.0,0.1)
+                    self.Turn_to_0=0
+                    print("turn left to 0")
+                elif (self.direction>=350 or self.direction<=10) and compass<90:
+                    self.driveMotors(0.0,0.1)
+                    self.Turn_to_0=0
+
+                elif compass< self.direction+90 and self.Turn_to_0:
+                    self.driveMotors(0.0,0.1)
+                    print("TURN LEFT")
+
                 else:
                     self.counter=0
+                    self.Turn_to_0=1
+
                     
         
         else:
 
-            if self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1': ##cruzamento
+            if self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1' and ( (compass>82.5 and compass<97.5) or (compass>172.5 and compass<187.5) or (compass>262.5 and compass<277.5) or (compass>352.5 and compass<360 or compass>0 and compass<7.5)  ): ##cruzamento
                 self.right=0
                 self.counter+=1
                 #guardar a ultima direçao do robô
-                self.direction=self.measures.compass
+                self.direction=compass
                 self.driveMotors(-0.15,0.15)
                 print("cruzamento")
 
-            elif self.measures.lineSensor[6]=='1' and self.measures.lineSensor[5]=='1':
+            elif self.measures.lineSensor[6]=='1' and self.measures.lineSensor[5]=='1' and ( (compass>82.5 and compass<97.5) or (compass>172.5 and compass<187.5) or (compass>262.5 and compass<277.5) or (compass>352.5 and compass<360 or compass>0 and compass<7.5)  ):
                 self.right=1
                 self.counter+=1
                 #guardar a ultima direçao do robô
-                self.direction=self.measures.compass
+                self.direction=compass
                 self.driveMotors(0.15,-0.15)
                 print("cruzamento")
             
@@ -124,7 +144,7 @@ class MyRob(CRobLinkAngs):
                 print("adjust right")
 
             else:
-                self.driveMotors(0.15,0.15)
+                self.driveMotors(0.12,0.12)
 
         
 

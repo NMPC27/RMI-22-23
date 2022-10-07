@@ -1,31 +1,31 @@
 {
-	"BUILD_DIR" : "/home/cunha/Desktop/ciberRatoTools/build/GUISample/GUISample_autogen",
-	"CMAKE_BINARY_DIR" : "/home/cunha/Desktop/ciberRatoTools/build",
-	"CMAKE_CURRENT_BINARY_DIR" : "/home/cunha/Desktop/ciberRatoTools/build/GUISample",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/cunha/Desktop/ciberRatoTools/GUISample",
+	"BUILD_DIR" : "/home/cunha/Desktop/RMI-22-23/build/GUISample/GUISample_autogen",
+	"CMAKE_BINARY_DIR" : "/home/cunha/Desktop/RMI-22-23/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/cunha/Desktop/RMI-22-23/build/GUISample",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/cunha/Desktop/RMI-22-23/GUISample",
 	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
-	"CMAKE_SOURCE_DIR" : "/home/cunha/Desktop/ciberRatoTools",
+	"CMAKE_SOURCE_DIR" : "/home/cunha/Desktop/RMI-22-23",
 	"HEADERS" : 
 	[
 		[
-			"/home/cunha/Desktop/ciberRatoTools/GUISample/lmap.h",
+			"/home/cunha/Desktop/RMI-22-23/GUISample/lmap.h",
 			"MU",
 			"EWIEGA46WW/moc_lmap.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/GUISample/robview.h",
+			"/home/cunha/Desktop/RMI-22-23/GUISample/robview.h",
 			"MU",
 			"EWIEGA46WW/moc_robview.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/GUISample/sampapp.h",
+			"/home/cunha/Desktop/RMI-22-23/GUISample/sampapp.h",
 			"MU",
 			"EWIEGA46WW/moc_sampapp.cpp"
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/home/cunha/Desktop/ciberRatoTools/build/GUISample/GUISample_autogen/include",
-	"MOC_COMPILATION_FILE" : "/home/cunha/Desktop/ciberRatoTools/build/GUISample/GUISample_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "/home/cunha/Desktop/RMI-22-23/build/GUISample/GUISample_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/cunha/Desktop/RMI-22-23/build/GUISample/GUISample_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
 		"CIBERQTAPP",
@@ -44,8 +44,8 @@
 	],
 	"MOC_INCLUDES" : 
 	[
-		"/home/cunha/Desktop/ciberRatoTools/GUISample",
-		"/home/cunha/Desktop/ciberRatoTools/libRobSock",
+		"/home/cunha/Desktop/RMI-22-23/GUISample",
+		"/home/cunha/Desktop/RMI-22-23/libRobSock",
 		"/usr/include/x86_64-linux-gnu/qt5",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui",
@@ -71,22 +71,22 @@
 		"-c",
 		"/usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/home/cunha/Desktop/ciberRatoTools/build/GUISample/GUISample_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/home/cunha/Desktop/RMI-22-23/build/GUISample/GUISample_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 6,
-	"PARSE_CACHE_FILE" : "/home/cunha/Desktop/ciberRatoTools/build/GUISample/CMakeFiles/GUISample_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "/home/cunha/Desktop/RMI-22-23/build/GUISample/CMakeFiles/GUISample_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt5/bin/moc",
 	"QT_UIC_EXECUTABLE" : "/usr/lib/qt5/bin/uic",
 	"QT_VERSION_MAJOR" : 5,
-	"SETTINGS_FILE" : "/home/cunha/Desktop/ciberRatoTools/build/GUISample/CMakeFiles/GUISample_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "/home/cunha/Desktop/RMI-22-23/build/GUISample/CMakeFiles/GUISample_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[ "/home/cunha/Desktop/ciberRatoTools/GUISample/lmap.cpp", "MU" ],
-		[ "/home/cunha/Desktop/ciberRatoTools/GUISample/main.cpp", "MU" ],
-		[ "/home/cunha/Desktop/ciberRatoTools/GUISample/robview.cpp", "MU" ],
-		[ "/home/cunha/Desktop/ciberRatoTools/GUISample/sampapp.cpp", "MU" ]
+		[ "/home/cunha/Desktop/RMI-22-23/GUISample/lmap.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/GUISample/main.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/GUISample/robview.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/GUISample/sampapp.cpp", "MU" ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

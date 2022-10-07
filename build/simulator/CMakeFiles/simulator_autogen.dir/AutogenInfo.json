@@ -1,181 +1,181 @@
 {
-	"BUILD_DIR" : "/home/cunha/Desktop/ciberRatoTools/build/simulator/simulator_autogen",
-	"CMAKE_BINARY_DIR" : "/home/cunha/Desktop/ciberRatoTools/build",
-	"CMAKE_CURRENT_BINARY_DIR" : "/home/cunha/Desktop/ciberRatoTools/build/simulator",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/cunha/Desktop/ciberRatoTools/simulator",
+	"BUILD_DIR" : "/home/cunha/Desktop/RMI-22-23/build/simulator/simulator_autogen",
+	"CMAKE_BINARY_DIR" : "/home/cunha/Desktop/RMI-22-23/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/cunha/Desktop/RMI-22-23/build/simulator",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/cunha/Desktop/RMI-22-23/simulator",
 	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
-	"CMAKE_SOURCE_DIR" : "/home/cunha/Desktop/ciberRatoTools",
+	"CMAKE_SOURCE_DIR" : "/home/cunha/Desktop/RMI-22-23",
 	"HEADERS" : 
 	[
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbactionhandler.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbactionhandler.h",
 			"MU",
 			"EWIEGA46WW/moc_cbactionhandler.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbbeacon.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbbeacon.h",
 			"MU",
 			"EWIEGA46WW/moc_cbbeacon.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbbutton.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbbutton.h",
 			"MU",
 			"EWIEGA46WW/moc_cbbutton.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbclient.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbclient.h",
 			"MU",
 			"EWIEGA46WW/moc_cbclient.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbcontrolpanel.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbcontrolpanel.h",
 			"MU",
 			"EWIEGA46WW/moc_cbcontrolpanel.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbgraph.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbgraph.h",
 			"MU",
 			"EWIEGA46WW/moc_cbgraph.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbgrid.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbgrid.h",
 			"MU",
 			"EWIEGA46WW/moc_cbgrid.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbgridhandler.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbgridhandler.h",
 			"MU",
 			"EWIEGA46WW/moc_cbgridhandler.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cblab.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cblab.h",
 			"MU",
 			"EWIEGA46WW/moc_cblab.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cblabdialog.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cblabdialog.h",
 			"MU",
 			"EWIEGA46WW/moc_cblabdialog.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cblabhandler.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cblabhandler.h",
 			"MU",
 			"EWIEGA46WW/moc_cblabhandler.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbmanagerobots.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbmanagerobots.h",
 			"MU",
 			"EWIEGA46WW/moc_cbmanagerobots.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbmotor.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbmotor.h",
 			"MU",
 			"EWIEGA46WW/moc_cbmotor.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbpanel.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbpanel.h",
 			"MU",
 			"EWIEGA46WW/moc_cbpanel.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbparamdialog.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbparamdialog.h",
 			"MU",
 			"EWIEGA46WW/moc_cbparamdialog.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbparameters.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbparameters.h",
 			"MU",
 			"EWIEGA46WW/moc_cbparameters.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbparamhandler.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbparamhandler.h",
 			"MU",
 			"EWIEGA46WW/moc_cbparamhandler.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbpoint.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbpoint.h",
 			"MU",
 			"EWIEGA46WW/moc_cbpoint.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbposition.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbposition.h",
 			"MU",
 			"EWIEGA46WW/moc_cbposition.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbreceptionhandler.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbreceptionhandler.h",
 			"MU",
 			"EWIEGA46WW/moc_cbreceptionhandler.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbreceptionist.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbreceptionist.h",
 			"MU",
 			"EWIEGA46WW/moc_cbreceptionist.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbrobot.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbrobot.h",
 			"MU",
 			"EWIEGA46WW/moc_cbrobot.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbrobotaction.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbrobotaction.h",
 			"MU",
 			"EWIEGA46WW/moc_cbrobotaction.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbrobotbeacon.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbrobotbeacon.h",
 			"MU",
 			"EWIEGA46WW/moc_cbrobotbeacon.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbrobotinfo.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbrobotinfo.h",
 			"MU",
 			"EWIEGA46WW/moc_cbrobotinfo.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbsensor.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbsensor.h",
 			"MU",
 			"EWIEGA46WW/moc_cbsensor.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbsimulator.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbsimulator.h",
 			"MU",
 			"EWIEGA46WW/moc_cbsimulator.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbsimulatorGUI.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbsimulatorGUI.h",
 			"MU",
 			"EWIEGA46WW/moc_cbsimulatorGUI.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbtarget.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbtarget.h",
 			"MU",
 			"EWIEGA46WW/moc_cbtarget.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbutils.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbutils.h",
 			"MU",
 			"EWIEGA46WW/moc_cbutils.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbview.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbview.h",
 			"MU",
 			"EWIEGA46WW/moc_cbview.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbviewhandler.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbviewhandler.h",
 			"MU",
 			"EWIEGA46WW/moc_cbviewhandler.cpp"
 		],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbwall.h",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbwall.h",
 			"MU",
 			"EWIEGA46WW/moc_cbwall.cpp"
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/home/cunha/Desktop/ciberRatoTools/build/simulator/simulator_autogen/include",
-	"MOC_COMPILATION_FILE" : "/home/cunha/Desktop/ciberRatoTools/build/simulator/simulator_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "/home/cunha/Desktop/RMI-22-23/build/simulator/simulator_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/cunha/Desktop/RMI-22-23/build/simulator/simulator_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
 		"QT_CORE_LIB",
@@ -194,8 +194,8 @@
 	],
 	"MOC_INCLUDES" : 
 	[
-		"/home/cunha/Desktop/ciberRatoTools/simulator",
-		"/home/cunha/Desktop/ciberRatoTools/build/simulator",
+		"/home/cunha/Desktop/RMI-22-23/simulator",
+		"/home/cunha/Desktop/RMI-22-23/build/simulator",
 		"/usr/include/x86_64-linux-gnu/qt5",
 		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
 		"/usr/include/x86_64-linux-gnu/qt5/QtGui",
@@ -222,88 +222,55 @@
 		"-c",
 		"/usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/home/cunha/Desktop/ciberRatoTools/build/simulator/simulator_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/home/cunha/Desktop/RMI-22-23/build/simulator/simulator_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 6,
-	"PARSE_CACHE_FILE" : "/home/cunha/Desktop/ciberRatoTools/build/simulator/CMakeFiles/simulator_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "/home/cunha/Desktop/RMI-22-23/build/simulator/CMakeFiles/simulator_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt5/bin/moc",
 	"QT_UIC_EXECUTABLE" : "/usr/lib/qt5/bin/uic",
 	"QT_VERSION_MAJOR" : 5,
-	"SETTINGS_FILE" : "/home/cunha/Desktop/ciberRatoTools/build/simulator/CMakeFiles/simulator_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "/home/cunha/Desktop/RMI-22-23/build/simulator/CMakeFiles/simulator_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbactionhandler.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbbeacon.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbbutton.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbclient.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbcontrolpanel.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbgraph.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbgrid.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbgridhandler.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cblab.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cblabdialog.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cblabhandler.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbmanagerobots.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbmotor.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbpanel.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbparamdialog.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbparameters.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbparamhandler.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbpoint.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbposition.cpp", "MU" ],
 		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbactionhandler.cpp",
+			"/home/cunha/Desktop/RMI-22-23/simulator/cbreceptionhandler.cpp",
 			"MU"
 		],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbbeacon.cpp", "MU" ],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbbutton.cpp", "MU" ],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbclient.cpp", "MU" ],
-		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbcontrolpanel.cpp",
-			"MU"
-		],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbgraph.cpp", "MU" ],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbgrid.cpp", "MU" ],
-		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbgridhandler.cpp",
-			"MU"
-		],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cblab.cpp", "MU" ],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cblabdialog.cpp", "MU" ],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cblabhandler.cpp", "MU" ],
-		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbmanagerobots.cpp",
-			"MU"
-		],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbmotor.cpp", "MU" ],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbpanel.cpp", "MU" ],
-		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbparamdialog.cpp",
-			"MU"
-		],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbparameters.cpp", "MU" ],
-		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbparamhandler.cpp",
-			"MU"
-		],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbpoint.cpp", "MU" ],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbposition.cpp", "MU" ],
-		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbreceptionhandler.cpp",
-			"MU"
-		],
-		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbreceptionist.cpp",
-			"MU"
-		],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbrobot.cpp", "MU" ],
-		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbrobotaction.cpp",
-			"MU"
-		],
-		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbrobotbeacon.cpp",
-			"MU"
-		],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbrobotinfo.cpp", "MU" ],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbsensor.cpp", "MU" ],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbsimulator.cpp", "MU" ],
-		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbsimulatorGUI.cpp",
-			"MU"
-		],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbtarget.cpp", "MU" ],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbutils.cpp", "MU" ],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbview.cpp", "MU" ],
-		[
-			"/home/cunha/Desktop/ciberRatoTools/simulator/cbviewhandler.cpp",
-			"MU"
-		],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/cbwall.cpp", "MU" ],
-		[ "/home/cunha/Desktop/ciberRatoTools/simulator/simulator.cpp", "MU" ]
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbreceptionist.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbrobot.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbrobotaction.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbrobotbeacon.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbrobotinfo.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbsensor.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbsimulator.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbsimulatorGUI.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbtarget.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbutils.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbview.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbviewhandler.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/cbwall.cpp", "MU" ],
+		[ "/home/cunha/Desktop/RMI-22-23/simulator/simulator.cpp", "MU" ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

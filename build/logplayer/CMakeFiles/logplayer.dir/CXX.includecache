@@ -34,29 +34,29 @@ qstring.h
 cbposition.h
 ../logplayer/cbposition.h
 
-/home/cunha/Desktop/ciberRatoTools/build/logplayer/logplayer_autogen/EWIEGA46WW/moc_cblogplayer.cpp
+/home/cunha/Desktop/RMI-22-23/build/logplayer/logplayer_autogen/EWIEGA46WW/moc_cblogplayer.cpp
 cblogplayer.h
-/home/cunha/Desktop/ciberRatoTools/build/logplayer/logplayer_autogen/EWIEGA46WW/cblogplayer.h
+/home/cunha/Desktop/RMI-22-23/build/logplayer/logplayer_autogen/EWIEGA46WW/cblogplayer.h
 QtCore/qbytearray.h
 -
 QtCore/qmetatype.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/build/logplayer/logplayer_autogen/mocs_compilation.cpp
+/home/cunha/Desktop/RMI-22-23/build/logplayer/logplayer_autogen/mocs_compilation.cpp
 EWIEGA46WW/moc_cblogplayer.cpp
-/home/cunha/Desktop/ciberRatoTools/build/logplayer/logplayer_autogen/EWIEGA46WW/moc_cblogplayer.cpp
+/home/cunha/Desktop/RMI-22-23/build/logplayer/logplayer_autogen/EWIEGA46WW/moc_cblogplayer.cpp
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbbeacon.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cbbeacon.cpp
 cbbeacon.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbbeacon.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbbeacon.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbbeacon.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbbeacon.h
 cbpoint.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbpoint.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbpoint.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbclient.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cbclient.cpp
 cbclient.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbclient.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbclient.h
 QUdpSocket
 -
 qhostaddress.h
@@ -66,7 +66,7 @@ iostream
 stdio.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbclient.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbclient.h
 QUdpSocket
 -
 qhostaddress.h
@@ -74,47 +74,47 @@ qhostaddress.h
 qxml.h
 -
 cbparameters.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbparameters.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbparameters.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbgrid.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cbgrid.cpp
 cbgrid.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbgrid.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbgrid.h
 stdio.h
 -
 stdlib.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbgrid.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbgrid.h
 cbposition.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbposition.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbposition.h
 qvector.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbgridhandler.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cbgridhandler.cpp
 cbgridhandler.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbgridhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbgridhandler.h
 cbgrid.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbgrid.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbgrid.h
 qstring.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbgridhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbgridhandler.h
 qxml.h
 -
 cbposition.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbposition.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbposition.h
 cbgrid.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbgrid.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbgrid.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cblab.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cblab.cpp
 cbbeacon.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbbeacon.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbbeacon.h
 cbtarget.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbtarget.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbtarget.h
 cbrobot.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbrobot.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbrobot.h
 cblab.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cblab.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cblab.h
 string.h
 -
 stdio.h
@@ -126,69 +126,69 @@ stdlib.h
 algorithm
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cblab.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cblab.h
 cbwall.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbwall.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbwall.h
 cbtarget.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbtarget.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbtarget.h
 cbbeacon.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbbeacon.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbbeacon.h
 vector
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cblabhandler.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cblabhandler.cpp
 cblabhandler.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cblabhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cblabhandler.h
 cbpoint.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbpoint.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbpoint.h
 cbwall.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbwall.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbwall.h
 cbbeacon.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbbeacon.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbbeacon.h
 cbtarget.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbtarget.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbtarget.h
 cblab.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cblab.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cblab.h
 cbpoint.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbpoint.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbpoint.h
 qstring.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cblabhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cblabhandler.h
 qxml.h
 -
 cbpoint.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbpoint.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbpoint.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbloghandler.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cbloghandler.cpp
 cblabhandler.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cblabhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cblabhandler.h
 cbgridhandler.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbgridhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbgridhandler.h
 cbparamhandler.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbparamhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbparamhandler.h
 cbloghandler.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbloghandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbloghandler.h
 qstring.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbloghandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbloghandler.h
 qxml.h
 -
 cbposition.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbposition.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbposition.h
 cbrobot.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbrobot.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbrobot.h
 cblab.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cblab.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cblab.h
 cbgrid.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbgrid.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbgrid.h
 cbparameters.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbparameters.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbparameters.h
 vector
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cblogplayer.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cblogplayer.cpp
 stdlib.h
 -
 iostream
@@ -204,25 +204,25 @@ qapplication.h
 QTextEdit
 -
 cbposition.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbposition.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbposition.h
 cbparameters.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbparameters.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbparameters.h
 cblab.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cblab.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cblab.h
 cbreceptionist.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbreceptionist.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbreceptionist.h
 cbview.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbview.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbview.h
 cbgrid.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbgrid.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbgrid.h
 cblogplayer.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cblogplayer.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cblogplayer.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cblogplayer.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cblogplayer.h
 ui_logplayerGUI.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/ui_logplayerGUI.h
+/home/cunha/Desktop/RMI-22-23/logplayer/ui_logplayerGUI.h
 cbrobot.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbrobot.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbrobot.h
 qobject.h
 -
 qvector.h
@@ -232,71 +232,71 @@ iostream
 vector
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbparameters.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cbparameters.cpp
 cbparameters.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbparameters.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbparameters.h
 stdio.h
 -
 stdlib.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbparameters.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbparameters.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbparamhandler.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cbparamhandler.cpp
 cbparamhandler.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbparamhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbparamhandler.h
 qstring.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbparamhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbparamhandler.h
 qxml.h
 -
 cbparameters.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbparameters.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbparameters.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbpoint.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cbpoint.cpp
 math.h
 -
 cbpoint.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbpoint.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbpoint.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbpoint.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbpoint.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbposition.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cbposition.cpp
 cbposition.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbposition.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbposition.h
 math.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbposition.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbposition.h
 cbpoint.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbpoint.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbpoint.h
 math.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbreceptionform.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbreceptionform.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbreceptionhandler.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cbreceptionhandler.cpp
 cbreceptionhandler.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbreceptionhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbreceptionhandler.h
 cbview.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbview.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbview.h
 iostream
 -
 qstring.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbreceptionhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbreceptionhandler.h
 qxml.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbreceptionist.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cbreceptionist.cpp
 cbreceptionist.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbreceptionist.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbreceptionist.h
 cbreceptionform.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbreceptionform.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbreceptionform.h
 cbreceptionhandler.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbreceptionhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbreceptionhandler.h
 qhostaddress.h
 -
 qmessagebox.h
@@ -320,7 +320,7 @@ arpa/inet.h
 stdlib.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbreceptionist.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbreceptionist.h
 QUdpSocket
 -
 QHostAddress
@@ -330,9 +330,9 @@ qxml.h
 iostream
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbrobot.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cbrobot.cpp
 cbrobot.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbrobot.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbrobot.h
 iostream
 -
 stdio.h
@@ -344,23 +344,23 @@ string.h
 math.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbrobot.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbrobot.h
 qstring.h
 -
 cbposition.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbposition.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbposition.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbtarget.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cbtarget.cpp
 cbtarget.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbtarget.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbtarget.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbtarget.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbtarget.h
 cbpoint.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbpoint.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbpoint.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbview.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cbview.cpp
 cbview.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbview.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbview.h
 QUdpSocket
 -
 QHostAddress
@@ -368,35 +368,35 @@ QHostAddress
 iostream
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbview.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbview.h
 cbclient.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbclient.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbclient.h
 cbviewhandler.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbviewhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbviewhandler.h
 cbviewcommand.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbviewcommand.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbviewcommand.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbviewcommand.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbviewcommand.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbviewhandler.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cbviewhandler.cpp
 cbviewhandler.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbviewhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbviewhandler.h
 iostream
 -
 qstring.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbviewhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbviewhandler.h
 qxml.h
 -
 cbviewcommand.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbviewcommand.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbviewcommand.h
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbwall.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/cbwall.cpp
 cbwall.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbwall.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbwall.h
 cbpoint.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbpoint.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbpoint.h
 math.h
 -
 iostream
@@ -404,13 +404,13 @@ iostream
 assert.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbwall.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbwall.h
 cbpoint.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbpoint.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbpoint.h
 vector
 -
 
-/home/cunha/Desktop/ciberRatoTools/logplayer/logplayer.cpp
+/home/cunha/Desktop/RMI-22-23/logplayer/logplayer.cpp
 iostream
 -
 stdlib.h
@@ -456,23 +456,23 @@ qfile.h
 qvector.h
 -
 cblogplayer.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cblogplayer.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cblogplayer.h
 cbloghandler.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbloghandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbloghandler.h
 cblab.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cblab.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cblab.h
 cblabhandler.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cblabhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cblabhandler.h
 cbgridhandler.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbgridhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbgridhandler.h
 cbparamhandler.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbparamhandler.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbparamhandler.h
 cbreceptionist.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbreceptionist.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbreceptionist.h
 cbgrid.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/cbgrid.h
+/home/cunha/Desktop/RMI-22-23/logplayer/cbgrid.h
 ui_logplayerGUI.h
-/home/cunha/Desktop/ciberRatoTools/logplayer/ui_logplayerGUI.h
+/home/cunha/Desktop/RMI-22-23/logplayer/ui_logplayerGUI.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QVariant
 qvariant.h

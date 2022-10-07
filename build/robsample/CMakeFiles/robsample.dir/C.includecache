@@ -10,7 +10,7 @@
 qapplication.h
 -
 
-/home/cunha/Desktop/ciberRatoTools/robsample/mainRob.c
+/home/cunha/Desktop/RMI-22-23/robsample/mainRob.c
 math.h
 -
 string.h
@@ -20,17 +20,17 @@ stdlib.h
 stdio.h
 -
 RobSock.h
-/home/cunha/Desktop/ciberRatoTools/robsample/RobSock.h
+/home/cunha/Desktop/RMI-22-23/robsample/RobSock.h
 robfunc.h
-/home/cunha/Desktop/ciberRatoTools/robsample/robfunc.h
+/home/cunha/Desktop/RMI-22-23/robsample/robfunc.h
 
-/home/cunha/Desktop/ciberRatoTools/robsample/robfunc.c
+/home/cunha/Desktop/RMI-22-23/robsample/robfunc.c
 robfunc.h
-/home/cunha/Desktop/ciberRatoTools/robsample/robfunc.h
+/home/cunha/Desktop/RMI-22-23/robsample/robfunc.h
 
-/home/cunha/Desktop/ciberRatoTools/robsample/robfunc.h
+/home/cunha/Desktop/RMI-22-23/robsample/robfunc.h
 RobSock.h
-/home/cunha/Desktop/ciberRatoTools/robsample/RobSock.h
+/home/cunha/Desktop/RMI-22-23/robsample/RobSock.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h
 QtCore/qglobal.h
