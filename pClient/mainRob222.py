@@ -17,6 +17,9 @@ class MyRob(CRobLinkAngs):
         #if it goes to the first if, it wont go to the second one
         self.Turn_to_0=1
 
+        # lista de vertices detectados
+        self.vertices=[]
+
     # In this map the center of cell (i,j), (i in 0..6, j in 0..13) is mapped to labMap[i*2][j*2].
     # to know if there is a wall on top of cell(i,j) (i in 0..5), check if the value of labMap[i*2+1][j*2] is space or not
     def setMap(self, labMap):
@@ -71,7 +74,7 @@ class MyRob(CRobLinkAngs):
 
     def wander(self):
 
-        print('|'+''.join(self.measures.lineSensor).replace('1','█').replace('0',' ')+'|')
+        #print('|'+''.join(self.measures.lineSensor).replace('1','█').replace('0',' ')+'|')
 
         
         compass=self.measures.compass+180
@@ -80,40 +83,42 @@ class MyRob(CRobLinkAngs):
         #print(self.measures.x,self.measures.y)
 
         if self.counter>0:
-
-            
+          
 
             if self.right==1:
                 if self.direction>=80 and self.direction<=100 and compass<350:
                     self.driveMotors(0.1,0.0)
                     self.Turn_to_0=0
-                    print("turn right to 0")
+                    #print("turn right to 0")
                 elif (self.direction>=350 or self.direction<=10) and compass>270:
                     self.driveMotors(0.1,0.0)
                     self.Turn_to_0=0
                     
                 elif compass> self.direction-90 and self.Turn_to_0:
                     self.driveMotors(0.1,0.0)
-                    print("TURN LEFT")
+                    #print("TURN LEFT")
                 else:
                     self.counter=0
                     self.Turn_to_0=1
 
                 if self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1':
-                    print('frente e esquerda')
+                    print('frente e direita')
+                    self.check_intersections('front')
+
+                    
 
             else:
                 if self.direction>=260 and self.direction<=280 and compass>10:
                     self.driveMotors(0.0,0.1)
                     self.Turn_to_0=0
-                    print("turn left to 0")
+                    #print("turn left to 0")
                 elif (self.direction>=350 or self.direction<=10) and compass<90:
                     self.driveMotors(0.0,0.1)
                     self.Turn_to_0=0
 
                 elif compass< self.direction+90 and self.Turn_to_0:
                     self.driveMotors(0.0,0.1)
-                    print("TURN LEFT")
+                    #print("TURN LEFT")
 
                 else:
                     self.counter=0
@@ -121,10 +126,9 @@ class MyRob(CRobLinkAngs):
 
                 if self.measures.lineSensor[5]=='1' and self.measures.lineSensor[6]=='1':
                     print('frente e esquerda')
+                    self.check_intersections('front')
 
-
-                    
-        
+  
         else:
 
             if self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1' and ( (compass>82.5 and compass<97.5) or (compass>172.5 and compass<187.5) or (compass>262.5 and compass<277.5) or (compass>352.5 and compass<360 or compass>0 and compass<7.5)  ): ##cruzamento
@@ -133,7 +137,9 @@ class MyRob(CRobLinkAngs):
                 #guardar a ultima direçao do robô
                 self.direction=compass
                 self.driveMotors(-0.15,0.15)
-                print("cruzamento")
+                #print("cruzamento")
+
+                self.check_intersections('left')
 
             elif self.measures.lineSensor[6]=='1' and self.measures.lineSensor[5]=='1' and ( (compass>82.5 and compass<97.5) or (compass>172.5 and compass<187.5) or (compass>262.5 and compass<277.5) or (compass>352.5 and compass<360 or compass>0 and compass<7.5)  ):
                 self.right=1
@@ -141,44 +147,149 @@ class MyRob(CRobLinkAngs):
                 #guardar a ultima direçao do robô
                 self.direction=compass
                 self.driveMotors(0.15,-0.15)
-                print("cruzamento")
+                #print("cruzamento")
+
+                self.check_intersections('right')
             
             elif self.measures.lineSensor[1]=='1' and self.measures.lineSensor[2]=='1':
                 self.driveMotors(0.0,0.1)
-                print("adjust left")
+                #print("adjust left")
 
             elif self.measures.lineSensor[4]=='1' and self.measures.lineSensor[5]=='1':
                 self.driveMotors(0.1,0.0)
-                print("adjust right")
+                #print("adjust right")
 
             else:
                 self.driveMotors(0.12,0.12)
 
+
+    def check_intersections(self,side):
+
+        v_check = [v for v in self.vertices if v.x == self.round_positions(self.measures.x) and v.y == self.round_positions(self.measures.y)]
+        #verificar se o vertice já existe no nosso array ou se é um vertice novo
+        if  v_check == []:
+
+            v = Vertice(self.round_positions(self.measures.x),self.round_positions(self.measures.y))
+            
+            v = self.check_adjacentes(v,side)
+            
+            
+            self.vertices.append(v)
+            #print("new Vertice")
+            print(v.get_visitados())
+
+        
+        #no caso do vertice já existir, verificar se o caminho já existe ou se é um caminho novo
+        else:
+            v = v_check[0]
+            v = self.check_adjacentes(v,side)
+
+            index = next((i for i, item in enumerate(self.vertices) if item.x == v.x and item.y == v.y), None)
+
+            if index!=None:
+                self.vertices[index] = v
+                #print("update Vertice")
+            print(v.get_visitados())
+
+
+        
+
+
+    
+    #verificar adjacentes dos vertices
+    def check_adjacentes(self,v,side):
+
+        value = 90 * round(self.direction / 90)
+        if value == 360:
+            value = 0
+        
+        adjacentes = v.get_visitados()
+        if side =='front' and adjacentes[value] !=True:
+            v.add_visitado(value, False)
+        else:
+        
+            #cruzamento á direita
+            if self.measures.lineSensor[6]=='1' and self.measures.lineSensor[5]=='1':
+                if self.direction>=80 and self.direction<=100 and adjacentes[0] != True:
+                        
+                    #v.add_adjacente(0, v1)
+                    v.add_visitado(0, True) if side == 'right' else v.add_visitado(0, False) 
+
+                elif self.direction>=350 and self.direction<=10 and adjacentes[270] != True:
+                        
+                    #v.add_adjacente(270, v1)
+                    v.add_visitado(270, True) if side == 'right' else v.add_visitado(270, False) 
+
+                        
+                elif self.direction>=260 and self.direction<=280 and adjacentes[180] != True:
+                        
+                    #v.add_adjacente(180, v1)
+                    v.add_visitado(180, True) if side == 'right' else v.add_visitado(180, False) 
+
+
+                elif self.direction>=170 and self.direction<=190 and adjacentes[90] != True: 
+
+                    #v.add_adjacente(90, v1)
+                    v.add_visitado(90, True) if side == 'right' else v.add_visitado(90, False) 
+
+
+
+            #cruzamento á esquerda
+            if self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1':
+                if self.direction>=80 and self.direction<=100 and adjacentes[180] != True:
+                        
+                    #v.add_adjacente(180, v1)
+                    v.add_visitado(180, True) if side == 'left' else v.add_visitado(180, False) 
+
+                elif self.direction>=350 and self.direction<=10 and adjacentes[90] != True:
+                        
+                    #v.add_adjacente(90, v1)
+                    v.add_visitado(90, True) if side == 'left' else v.add_visitado(90, False) 
+                        
+                elif self.direction>=260 and self.direction<=280 and adjacentes[0] != True:
+                        
+                    #v.add_adjacente(0, v1)
+                    v.add_visitado(0, True) if side == 'left' else v.add_visitado(0, False) 
+
+                elif self.direction>=170 and self.direction<=190 and adjacentes[270] != True:
+
+                    #v.add_adjacente(270, v1)
+                    v.add_visitado(270, True) if side == 'left' else v.add_visitado(270, False) 
+
+        return v
+    
+    # arredondar para multiplos de 2
+    def round_positions(self,number):
+        return 2 * round(number / 2)
         
 class Vertice():
     def __init__(self, x, y):
         self.x = x
         self.y = y
+        #exemplo {0: v1, 90: v2, 180: v3, 270: v4} se fosse um cruzamento
         self.adjacentes = {}
-        self.visitados = {}
+        #exemplo {0: false, 90: false, 180: true, 270: false} se fosse um cruzamento
+        self.visitados = {0: None, 90: None, 180: None, 270: None}
 
-    def add_adjacente(self, adj):
-        self.adjacentes.append(adj)
+    # adiciona um vertice adjacente no dicionario, com o angulo como key
+    def add_adjacente(self,angulo, vertice):
+        self.adjacentes[angulo] = vertice
+        self.visitados[angulo] = False
 
     def get_adjacentes(self):
         return self.adjacentes
+
+    def add_visitado(self,angulo,cond):
+        self.visitados[angulo] = cond
+
+    def get_visitados(self):
+        return self.visitados
 
     def get_x(self):
         return self.x
 
     def get_y(self):
         return self.y
-
-    def set_visitado(self, visitado):
-        self.visitado = visitado
-
-    def get_visitado(self):
-        return self.visitado
 
     def __str__(self):
         return "V(%d, %d)" % (self.x, self.y)
