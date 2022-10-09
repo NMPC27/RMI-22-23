@@ -98,6 +98,10 @@ class MyRob(CRobLinkAngs):
                 else:
                     self.counter=0
                     self.Turn_to_0=1
+
+                if self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1':
+                    print('frente e esquerda')
+
             else:
                 if self.direction>=260 and self.direction<=280 and compass>10:
                     self.driveMotors(0.0,0.1)
@@ -114,6 +118,10 @@ class MyRob(CRobLinkAngs):
                 else:
                     self.counter=0
                     self.Turn_to_0=1
+
+                if self.measures.lineSensor[5]=='1' and self.measures.lineSensor[6]=='1':
+                    print('frente e esquerda')
+
 
                     
         
@@ -147,7 +155,33 @@ class MyRob(CRobLinkAngs):
                 self.driveMotors(0.12,0.12)
 
         
+class Vertice():
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.adjacentes = {}
+        self.visitados = {}
 
+    def add_adjacente(self, adj):
+        self.adjacentes.append(adj)
+
+    def get_adjacentes(self):
+        return self.adjacentes
+
+    def get_x(self):
+        return self.x
+
+    def get_y(self):
+        return self.y
+
+    def set_visitado(self, visitado):
+        self.visitado = visitado
+
+    def get_visitado(self):
+        return self.visitado
+
+    def __str__(self):
+        return "V(%d, %d)" % (self.x, self.y)
 
 
 class Map():
