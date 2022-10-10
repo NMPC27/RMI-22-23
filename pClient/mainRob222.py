@@ -158,8 +158,8 @@ class MyRob(CRobLinkAngs):
                 else:
                     front = 0
 
-            if left != None or right != None or front != None:
-                print('left: '+str(left)+' front: '+str(front)+' right: '+str(right))
+            #if left != None or right != None or front != None:
+                #print('left: '+str(left)+' front: '+str(front)+' right: '+str(right))
 
             if (left == 1 ) or (left==0 and right==None and front==None)  : ##cruzamento
                 self.right=0
@@ -388,7 +388,7 @@ class MyRob(CRobLinkAngs):
             if index!=None:
                 self.vertices[index] = v
                 #print("update Vertice")
-            #print(v.get_visitados())
+            print(v.get_visitados())
 
     #verificar adjacentes dos vertices
     def check_adjacentes(self,v,side):
@@ -397,6 +397,15 @@ class MyRob(CRobLinkAngs):
         if value == 360:
             value = 0
         
+        # adicionar a direcao de onde viemos como visitada
+        if value == 90:
+            v.add_visitado(270, True)
+        elif value == 0:
+            v.add_visitado(180, True)
+        else:
+            v.add_visitado(value-180, True)
+
+
         adjacentes = v.get_visitados()
         if side =='front' and adjacentes[value] !=True:
             v.add_visitado(value, False)
