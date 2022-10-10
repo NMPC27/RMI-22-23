@@ -81,6 +81,7 @@ class MyRob(CRobLinkAngs):
         #print(str(compass)+'     '+str(self.counter))
 
         #print(self.measures.x,self.measures.y)
+        #print(self.vertices)
 
         if self.counter>0:
           
@@ -102,7 +103,7 @@ class MyRob(CRobLinkAngs):
                     self.Turn_to_0=1
 
                 if self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1':
-                    print('frente e direita')
+                    #print('frente e direita')
                     self.check_intersections('front')
 
                     
@@ -125,13 +126,42 @@ class MyRob(CRobLinkAngs):
                     self.Turn_to_0=1
 
                 if self.measures.lineSensor[5]=='1' and self.measures.lineSensor[6]=='1':
-                    print('frente e esquerda')
+                    #print('frente e esquerda')
                     self.check_intersections('front')
 
   
         else:
 
-            if self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1' and ( (compass>82.5 and compass<97.5) or (compass>172.5 and compass<187.5) or (compass>262.5 and compass<277.5) or (compass>352.5 and compass<360 or compass>0 and compass<7.5)  ): ##cruzamento
+            # None = nao pode ir, 0 = pode ir mas já foi , 1 = pode ir mas ainda nao foi
+            right = None
+            left = None
+            front = None
+
+            if self.can_turn('left'):
+
+                if self.decide('left'):
+                    left = 1
+                else:
+                    left = 0
+            
+            if self.can_turn('right'):
+
+                if self.decide('right'):
+                    right = 1
+                else:
+                    right = 0
+            
+            if self.can_turn('front'):
+
+                if self.decide('front'):
+                    front = 1
+                else:
+                    front = 0
+
+            if left != None or right != None or front != None:
+                print('left: '+str(left)+' front: '+str(front)+' right: '+str(right))
+
+            if (left == 1 ) or (left==0 and right==None and front==None)  : ##cruzamento
                 self.right=0
                 self.counter+=1
                 #guardar a ultima direçao do robô
@@ -141,7 +171,8 @@ class MyRob(CRobLinkAngs):
 
                 self.check_intersections('left')
 
-            elif self.measures.lineSensor[6]=='1' and self.measures.lineSensor[5]=='1' and ( (compass>82.5 and compass<97.5) or (compass>172.5 and compass<187.5) or (compass>262.5 and compass<277.5) or (compass>352.5 and compass<360 or compass>0 and compass<7.5)  ):
+            #( right == 1 ) or (right==0 and left==None)
+            elif (right == 1 ) or (right==0 and left==None and front==None) : ##cruzamento
                 self.right=1
                 self.counter+=1
                 #guardar a ultima direçao do robô
@@ -162,6 +193,174 @@ class MyRob(CRobLinkAngs):
             else:
                 self.driveMotors(0.12,0.12)
 
+    # funcao que decide se o robo devia virar para uma dada direcao
+    def decide(self,side):
+
+        compass=self.measures.compass+180
+        v_check = [v for v in self.vertices if v.x == self.round_positions(self.measures.x) and v.y == self.round_positions(self.measures.y)]
+        
+        # se o vertice nao existir é porque vai ser criado neste cruzamento (DEVE SER TESTADO MAIS TARDE DE NOVO)
+        if v_check == []:
+            return True
+        else:
+            v = v_check[0]
+
+            visitados = v.get_visitados()
+
+            
+            #cruzamento á direita
+            if side == 'right':
+                if compass>=80 and compass<=100:
+                        
+                    if visitados[0] == True:
+                        return False
+                    else:
+                        return True
+
+                elif compass>=350 and compass<=10:
+                        
+                    if visitados[270] == True:
+                        return False
+                    else:
+                        return True 
+
+                        
+                elif compass>=260 and compass<=280:
+                        
+                    if visitados[180] == True:
+                        return False
+                    else:
+                        return True
+
+
+                elif compass>=170 and compass<=190: 
+
+                    if visitados[90] == True:
+                        return False
+                    else:
+                        return True
+
+
+
+            #cruzamento á esquerda
+            if side == 'left':
+                if compass>=80 and compass<=100:
+                        
+                    if visitados[180] == True:
+                        return False
+                    else:
+                        return True
+
+                elif compass>=350 and compass<=10:
+                        
+                    if visitados[90] == True:
+                        return False
+                    else:
+                        return True
+                        
+                elif compass>=260 and compass<=280:
+                    
+                    if visitados[0] == True:
+                        return False
+                    else:
+                        return True 
+
+                elif compass>=170 and compass<=190:
+
+                    if visitados[270] == True:
+                        return False
+                    else:
+                        return True
+            
+            #cruzamento á frente
+            if side == 'front':
+                if compass>=80 and compass<=100:
+                        
+                    if visitados[90] == True:
+                        return False
+                    else:
+                        return True
+
+                elif compass>=350 and compass<=10:
+                        
+                    if visitados[0] == True:
+                        return False
+                    else:
+                        return True
+                        
+                elif compass>=260 and compass<=280:
+                        
+                    if visitados[270] == True:
+                        return False
+                    else:
+                        return True
+
+                elif compass>=170 and compass<=190:
+
+                    if visitados[180] == True:
+                        return False
+                    else:
+                        return True
+
+
+
+    # funcao que verifica se o robo pode virar para uma dada direcao
+    def can_turn(self,side):
+        
+        compass=self.measures.compass+180
+
+        if side=='left':
+            if self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1' and ( (compass>82.5 and compass<97.5) or (compass>172.5 and compass<187.5) or (compass>262.5 and compass<277.5) or (compass>352.5 and compass<360 or compass>0 and compass<7.5) ):
+                
+                return True
+            else:
+                return False
+        elif side=='right':
+            if self.measures.lineSensor[6]=='1' and self.measures.lineSensor[5]=='1' and ( (compass>82.5 and compass<97.5) or (compass>172.5 and compass<187.5) or (compass>262.5 and compass<277.5) or (compass>352.5 and compass<360 or compass>0 and compass<7.5) ):
+                
+                return True
+            else:
+                return False
+        elif side == 'front':
+
+            v_check = [v for v in self.vertices if v.x == self.round_positions(self.measures.x) and v.y == self.round_positions(self.measures.y)]
+
+            if v_check == []:
+                return False
+            else:
+                v = v_check[0]
+
+                visitados = v.get_visitados()
+
+                if compass>=80 and compass<=100:
+                        
+                    if visitados[90] == None:
+                        return False
+                    else:
+                        return True
+
+                elif compass>=350 and compass<=10:
+                        
+                    if visitados[0] == None:
+                        return False
+                    else:
+                        return True
+                        
+                elif compass>=260 and compass<=280:
+                        
+                    if visitados[270] == None:
+                        return False
+                    else:
+                        return True
+
+                elif compass>=170 and compass<=190:
+
+                    if visitados[180] == None:
+                        return False
+                    else:
+                        return True
+
+
 
     def check_intersections(self,side):
 
@@ -176,7 +375,7 @@ class MyRob(CRobLinkAngs):
             
             self.vertices.append(v)
             #print("new Vertice")
-            print(v.get_visitados())
+            #print(v.get_visitados())
 
         
         #no caso do vertice já existir, verificar se o caminho já existe ou se é um caminho novo
@@ -189,13 +388,8 @@ class MyRob(CRobLinkAngs):
             if index!=None:
                 self.vertices[index] = v
                 #print("update Vertice")
-            print(v.get_visitados())
+            #print(v.get_visitados())
 
-
-        
-
-
-    
     #verificar adjacentes dos vertices
     def check_adjacentes(self,v,side):
 
@@ -274,7 +468,6 @@ class Vertice():
     # adiciona um vertice adjacente no dicionario, com o angulo como key
     def add_adjacente(self,angulo, vertice):
         self.adjacentes[angulo] = vertice
-        self.visitados[angulo] = False
 
     def get_adjacentes(self):
         return self.adjacentes
