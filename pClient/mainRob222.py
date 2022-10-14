@@ -29,6 +29,16 @@ class MyRob(CRobLinkAngs):
         # lista de vertices detectados
         self.vertices=[]
 
+        # ultimo vertice visitado
+        self.last_vertice = None
+
+        # lista de arestas detectadas
+        self.adjacent_dict={
+            # (846,398): set{(856,400,270, 4)},
+            # }
+        }
+
+
     # In this map the center of cell (i,j), (i in 0..6, j in 0..13) is mapped to labMap[i*2][j*2].
     # to know if there is a wall on top of cell(i,j) (i in 0..5), check if the value of labMap[i*2+1][j*2] is space or not
     def setMap(self, labMap):
@@ -84,10 +94,8 @@ class MyRob(CRobLinkAngs):
     def wander(self):
 
         if keyboard.is_pressed('q'):  # if key 'q' is pressed 
-            print('You Pressed A Key!')
-            for v in self.vertices:
-                print(v.x,v.y)
-                print(v.get_visitados())
+            print(self.adjacent_dict)
+            
 
         #print('|'+''.join(self.measures.lineSensor).replace('1','█').replace('0',' ')+'|')
 
@@ -204,7 +212,12 @@ class MyRob(CRobLinkAngs):
 
             #if left != None or right != None or front != None:
                 #print('left: '+str(left)+' front: '+str(front)+' right: '+str(right))
-        
+            if left != 1  and right != 1 and front != 1 and (left==0 or right==0 or front==0):
+                x=self.vertices[0].x
+                y=self.vertices[0].y
+                print(self.a_star_algorithm((self.round_positions(self.measures.x),self.round_positions(self.measures.y)),(x,y)))
+
+
 
             if (left == 1 ) or (left==0 and right==None and front==None)  : ##cruzamento
                 self.right=0
@@ -428,6 +441,39 @@ class MyRob(CRobLinkAngs):
 
         v_check = [v for v in self.vertices if v.x == self.round_positions(self.measures.x) and v.y == self.round_positions(self.measures.y)]
         #verificar se o vertice já existe no nosso array ou se é um vertice novo
+
+        value = 90 * round(self.direction / 90)
+        if value == 360:
+            value = 0
+
+        if self.last_vertice != None:
+
+            cost = 0
+            if self.last_vertice[0] == self.round_positions(self.measures.x):
+                cost = abs(self.last_vertice[1] - self.round_positions(self.measures.y))
+
+            if self.last_vertice[1] == self.round_positions(self.measures.y):
+                cost = abs(self.last_vertice[0] - self.round_positions(self.measures.x))
+
+            if cost != 0:
+            
+                if self.last_vertice not in self.adjacent_dict.keys():
+                    self.adjacent_dict[self.last_vertice] = set()
+                self.adjacent_dict[(self.last_vertice[0],self.last_vertice[1])].add((self.round_positions(self.measures.x),self.round_positions(self.measures.y),value,cost))
+
+                if value>=180:
+                    value-=180
+                else:
+                    value+=180
+
+                if (self.round_positions(self.measures.x),self.round_positions(self.measures.y)) not in self.adjacent_dict.keys():
+                    self.adjacent_dict[(self.round_positions(self.measures.x),self.round_positions(self.measures.y))] = set()
+                self.adjacent_dict[(self.round_positions(self.measures.x),self.round_positions(self.measures.y))].add((self.last_vertice[0],self.last_vertice[1],value,cost))
+        
+        
+        self.last_vertice = (self.round_positions(self.measures.x),self.round_positions(self.measures.y))
+
+
         if  v_check == []:
 
             v = Vertice(self.round_positions(self.measures.x),self.round_positions(self.measures.y))
@@ -552,6 +598,86 @@ class MyRob(CRobLinkAngs):
     def round_positions(self,number):
         return 2 * round(number / 2)
         
+    def a_star_algorithm(self, start_node, stop_node):
+        # open_list is a list of nodes which have been visited, but who's neighbors
+        # haven't all been inspected, starts off with the start node
+        # closed_list is a list of nodes which have been visited
+        # and who's neighbors have been inspected
+        open_list = set([start_node])
+        closed_list = set([])
+
+        # g contains current distances from start_node to all other nodes
+        # the default value (if it's not found in the map) is +infinity
+        g = {}
+
+        g[start_node] = 0
+
+        # parents contains an adjacency map of all nodes
+        parents = {}
+        parents[start_node] = start_node
+
+        while len(open_list) > 0:
+            n = None
+
+            # find a node with the lowest value of f() - evaluation function
+            for v in open_list:
+                if n == None or g[v] < g[n]:
+                    n = v
+
+            if n == None:
+                print('Path does not exist!')
+                return None
+
+            # if the current node is the stop_node
+            # then we begin reconstructin the path from it to the start_node
+            if n == stop_node:
+                reconst_path = []
+
+                while parents[n] != n:
+                    reconst_path.append(n)
+                    n = parents[n]
+
+                reconst_path.append(start_node)
+
+                reconst_path.reverse()
+
+                print('Path found: {}'.format(reconst_path))
+                return reconst_path
+
+            # for all neighbors of the current node do
+            # (self.round_positions(self.measures.x),self.round_positions(self.measures.y),value,cost)
+            # (m,weight)
+            for (x,y,value,cost) in self.adjacent_dict[n]:
+                # if the current node isn't in both open_list and closed_list
+                # add it to open_list and note n as it's parent
+                if (x,y) not in open_list and (x,y) not in closed_list:
+                    open_list.add((x,y))
+                    parents[(x,y)] = n
+                    g[(x,y)] = g[n] + cost
+
+                # otherwise, check if it's quicker to first visit n, then m
+                # and if it is, update parent data and g data
+                # and if the node was in the closed_list, move it to open_list
+                else:
+                    if g[(x,y)] > g[n] + cost:
+                        g[(x,y)] = g[n] + cost
+                        parents[(x,y)] = n
+
+                        if (x,y) in closed_list:
+                            closed_list.remove((x,y))
+                            open_list.add((x,y))
+
+            # remove n from the open_list, and add it to closed_list
+            # because all of his neighbors were inspected
+            open_list.remove(n)
+            closed_list.add(n)
+
+        print('Path does not exist!')
+        return None
+
+
+
+
 class Vertice():
     def __init__(self, x, y):
         self.x = x
