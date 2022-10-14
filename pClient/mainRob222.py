@@ -12,13 +12,16 @@ class MyRob(CRobLinkAngs):
     def __init__(self, rob_name, rob_id, angles, host):
         CRobLinkAngs.__init__(self, rob_name, rob_id, angles, host)
         self.counter=0
-        self.right=0
+        self.right=None
         self.direction=0
         #if it goes to the first if, it wont go to the second one
         self.Turn_to_0=1
 
         #number of sides detected 
         self.number_sides_detected=0
+
+        #virar 180 graus - dead end
+        self.turn_180=0
 
         # lista de vertices detectados
         self.vertices=[]
@@ -105,6 +108,7 @@ class MyRob(CRobLinkAngs):
                     self.counter=0
                     self.Turn_to_0=1
                     self.number_sides_detected=0
+                    self.right=None
 
                 if self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1' and self.number_sides_detected!=2:
                     #print('frente e direita')
@@ -112,7 +116,8 @@ class MyRob(CRobLinkAngs):
 
                     
 
-            else:
+            elif self.right==0:
+
                 if self.direction>=260 and self.direction<=280 and compass>10:
                     self.driveMotors(0.0,0.1)
                     self.Turn_to_0=0
@@ -129,11 +134,32 @@ class MyRob(CRobLinkAngs):
                     self.counter=0
                     self.Turn_to_0=1
                     self.number_sides_detected=0
+                    self.right=None
 
 
                 if self.measures.lineSensor[5]=='1' and self.measures.lineSensor[6]=='1' and self.number_sides_detected!=2:
                     #print('frente e esquerda')
                     self.check_intersections('front')
+            
+            else:
+                if self.turn_180 == 1:
+                    
+                    value = 90 * round(self.direction / 90)
+                    if value == 360:
+                        value = 0
+
+                    if value>=180:
+                        if value-180<= compass:
+                            self.driveMotors(0.15,-0.15)
+                        
+                    else:
+                        if value + 180 >= compass:
+                            self.driveMotors(0.15,-0.15)
+
+                self.counter=0
+                self.turn_180=0
+
+
 
   
         else:
@@ -206,6 +232,13 @@ class MyRob(CRobLinkAngs):
                 self.driveMotors(0.1,-0.1)
                 #print('NEW STUFF rigth')
 
+            elif self.measures.lineSensor==['0','0','0','0','0','0','0']:
+                self.turn_180=1
+                self.counter+= 1
+                self.direction=compass
+                self.driveMotors(0.15,-0.15)
+                 
+            
             else:
                 self.driveMotors(0.12,0.12)
 
