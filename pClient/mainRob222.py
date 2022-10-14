@@ -5,6 +5,9 @@ from croblink import *
 from math import *
 import xml.etree.ElementTree as ET
 
+
+import keyboard #!DELETE
+
 CELLROWS=7
 CELLCOLS=14
 
@@ -80,6 +83,12 @@ class MyRob(CRobLinkAngs):
 
     def wander(self):
 
+        if keyboard.is_pressed('q'):  # if key 'q' is pressed 
+            print('You Pressed A Key!')
+            for v in self.vertices:
+                print(v.x,v.y)
+                print(v.get_visitados())
+
         #print('|'+''.join(self.measures.lineSensor).replace('1','█').replace('0',' ')+'|')
 
         
@@ -151,16 +160,19 @@ class MyRob(CRobLinkAngs):
                     if value>=180:
                         if value-180<= compass:
                             self.driveMotors(0.15,-0.15)
+                        else:
+                            self.turn_180=0
+                            self.counter=0
+
                         
                     else:
                         if value + 180 >= compass:
                             self.driveMotors(0.15,-0.15)
-
-                self.counter=0
-                self.turn_180=0
-
-
-
+                        else:
+                            self.turn_180=0
+                            self.counter=0
+                            
+                            
   
         else:
 
@@ -190,8 +202,8 @@ class MyRob(CRobLinkAngs):
                 else:
                     front = 0
 
-            if left != None or right != None or front != None:
-                print('left: '+str(left)+' front: '+str(front)+' right: '+str(right))
+            #if left != None or right != None or front != None:
+                #print('left: '+str(left)+' front: '+str(front)+' right: '+str(right))
         
 
             if (left == 1 ) or (left==0 and right==None and front==None)  : ##cruzamento
@@ -200,7 +212,7 @@ class MyRob(CRobLinkAngs):
                 #guardar a ultima direçao do robô
                 self.direction=compass
                 self.driveMotors(-0.15,0.15)
-                print("cruzamento")
+                #print("cruzamento")
 
                 self.check_intersections('left')
 
@@ -211,7 +223,7 @@ class MyRob(CRobLinkAngs):
                 #guardar a ultima direçao do robô
                 self.direction=compass
                 self.driveMotors(0.15,-0.15)
-                print("cruzamento")
+                #print("cruzamento")
 
                 self.check_intersections('right')
             
@@ -237,6 +249,7 @@ class MyRob(CRobLinkAngs):
                 self.counter+= 1
                 self.direction=compass
                 self.driveMotors(0.15,-0.15)
+                self.check_intersections('back')
                  
             
             else:
