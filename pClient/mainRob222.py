@@ -17,6 +17,9 @@ class MyRob(CRobLinkAngs):
         #if it goes to the first if, it wont go to the second one
         self.Turn_to_0=1
 
+        #number of sides detected 
+        self.number_sides_detected=0
+
         # lista de vertices detectados
         self.vertices=[]
 
@@ -101,8 +104,9 @@ class MyRob(CRobLinkAngs):
                 else:
                     self.counter=0
                     self.Turn_to_0=1
+                    self.number_sides_detected=0
 
-                if self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1':
+                if self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1' and self.number_sides_detected!=2:
                     #print('frente e direita')
                     self.check_intersections('front')
 
@@ -124,8 +128,10 @@ class MyRob(CRobLinkAngs):
                 else:
                     self.counter=0
                     self.Turn_to_0=1
+                    self.number_sides_detected=0
 
-                if self.measures.lineSensor[5]=='1' and self.measures.lineSensor[6]=='1':
+
+                if self.measures.lineSensor[5]=='1' and self.measures.lineSensor[6]=='1' and self.number_sides_detected!=2:
                     #print('frente e esquerda')
                     self.check_intersections('front')
 
@@ -158,8 +164,9 @@ class MyRob(CRobLinkAngs):
                 else:
                     front = 0
 
-            #if left != None or right != None or front != None:
-            #    print('left: '+str(left)+' front: '+str(front)+' right: '+str(right))
+            if left != None or right != None or front != None:
+                print('left: '+str(left)+' front: '+str(front)+' right: '+str(right))
+        
 
             if (left == 1 ) or (left==0 and right==None and front==None)  : ##cruzamento
                 self.right=0
@@ -172,7 +179,7 @@ class MyRob(CRobLinkAngs):
                 self.check_intersections('left')
 
             #( right == 1 ) or (right==0 and left==None)
-            elif (right == 1 ) or (right==0 and left==None and front==None) : ##cruzamento
+            elif (right == 1 ) or (right==0 and front==None) : ##cruzamento
                 self.right=1
                 self.counter+=1
                 #guardar a ultima direçao do robô
@@ -184,20 +191,20 @@ class MyRob(CRobLinkAngs):
             
             elif self.measures.lineSensor[1]=='1' and self.measures.lineSensor[2]=='1':
                 self.driveMotors(0.0,0.1)
-                print("adjust left")
+                #print("adjust left")
 
             elif self.measures.lineSensor[4]=='1' and self.measures.lineSensor[5]=='1':
                 self.driveMotors(0.1,0.0)
-                print("adjust right")
+                #print("adjust right")
 
             elif self.measures.lineSensor[0]=='1':
                 self.driveMotors(-0.1,0.1)
-                print('NEW STUFF left')
+                #print('NEW STUFF left')
 
 
             elif self.measures.lineSensor[6]=='1':
                 self.driveMotors(0.1,-0.1)
-                print('NEW STUFF rigth')
+                #print('NEW STUFF rigth')
 
             else:
                 self.driveMotors(0.12,0.12)
@@ -319,13 +326,13 @@ class MyRob(CRobLinkAngs):
         compass=self.measures.compass+180
 
         if side=='left':
-            if self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1' and ( (compass>82.5 and compass<97.5) or (compass>172.5 and compass<187.5) or (compass>262.5 and compass<277.5) or (compass>352.5 and compass<360 or compass>0 and compass<7.5) ):
+            if self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1' and ( (compass>85 and compass<95) or (compass>175 and compass<185) or (compass>265 and compass<275) or (compass>355 and compass<360 or compass>0 and compass<5) ):
                 
                 return True
             else:
                 return False
         elif side=='right':
-            if self.measures.lineSensor[6]=='1' and self.measures.lineSensor[5]=='1' and ( (compass>82.5 and compass<97.5) or (compass>172.5 and compass<187.5) or (compass>262.5 and compass<277.5) or (compass>352.5 and compass<360 or compass>0 and compass<7.5) ):
+            if self.measures.lineSensor[6]=='1' and self.measures.lineSensor[5]=='1' and ( (compass>85 and compass<95) or (compass>175 and compass<185) or (compass>265 and compass<275) or (compass>355 and compass<360 or compass>0 and compass<5) ):
                 
                 return True
             else:
@@ -384,7 +391,7 @@ class MyRob(CRobLinkAngs):
             
             self.vertices.append(v)
             #print("new Vertice")
-            print(v.get_visitados())
+            #print(v.get_visitados())
 
         
         #no caso do vertice já existir, verificar se o caminho já existe ou se é um caminho novo
@@ -397,7 +404,7 @@ class MyRob(CRobLinkAngs):
             if index!=None:
                 self.vertices[index] = v
                 #print("update Vertice")
-            print(v.get_visitados())
+            #print(v.get_visitados())
 
     #verificar adjacentes dos vertices
     def check_adjacentes(self,v,side):
@@ -405,38 +412,56 @@ class MyRob(CRobLinkAngs):
         value = 90 * round(self.direction / 90)
         if value == 360:
             value = 0
+
+        if value>=180:
+            v.add_visitado(value-180, True)
+        else:
+            v.add_visitado(value+180, True)
         
         adjacentes = v.get_visitados()
         if side =='front':
-            if adjacentes[value] !=True: #!VER TA AQUI BOSTA
+            if adjacentes[value] !=True: 
                 v.add_visitado(value, False)
 
         else:
             #print(self.direction)
             #cruzamento á direita
             if self.measures.lineSensor[6]=='1' and self.measures.lineSensor[5]=='1':
+
                 if self.direction>=80 and self.direction<=100 and adjacentes[0] != True:
                         
                     #v.add_adjacente(0, v1)
-                    v.add_visitado(0, True) if side == 'right' else v.add_visitado(0, False) 
+                    v.add_visitado(0, True) if side == 'right' else v.add_visitado(0, False)
+
+                    self.number_sides_detected+=1
+
 
                 elif (self.direction>=350 or self.direction<=10) and adjacentes[270] != True:
                     #print('check adjacentes right')
                         
                     #v.add_adjacente(270, v1)
-                    v.add_visitado(270, True) if side == 'right' else v.add_visitado(270, False) 
+                    v.add_visitado(270, True) if side == 'right' else v.add_visitado(270, False)
+
+                    self.number_sides_detected+=1
+
 
                         
                 elif self.direction>=260 and self.direction<=280 and adjacentes[180] != True:
                         
                     #v.add_adjacente(180, v1)
-                    v.add_visitado(180, True) if side == 'right' else v.add_visitado(180, False) 
+                    v.add_visitado(180, True) if side == 'right' else v.add_visitado(180, False)
+
+                    self.number_sides_detected+=1
+
 
 
                 elif self.direction>=170 and self.direction<=190 and adjacentes[90] != True: 
 
                     #v.add_adjacente(90, v1)
-                    v.add_visitado(90, True) if side == 'right' else v.add_visitado(90, False) 
+                    v.add_visitado(90, True) if side == 'right' else v.add_visitado(90, False)
+
+                    self.number_sides_detected+=1
+
 
 
 
@@ -445,23 +470,35 @@ class MyRob(CRobLinkAngs):
                 if self.direction>=80 and self.direction<=100 and adjacentes[180] != True:
                         
                     #v.add_adjacente(180, v1)
-                    v.add_visitado(180, True) if side == 'left' else v.add_visitado(180, False) 
+                    v.add_visitado(180, True) if side == 'left' else v.add_visitado(180, False)
+
+                    self.number_sides_detected+=1
+
 
                 elif (self.direction>=350 or self.direction<=10) and adjacentes[90] != True:
                     #print('check adjacentes left')
                         
                     #v.add_adjacente(90, v1)
-                    v.add_visitado(90, True) if side == 'left' else v.add_visitado(90, False) 
+                    v.add_visitado(90, True) if side == 'left' else v.add_visitado(90, False)
+
+                    self.number_sides_detected+=1
+
                         
                 elif self.direction>=260 and self.direction<=280 and adjacentes[0] != True:
                         
                     #v.add_adjacente(0, v1)
-                    v.add_visitado(0, True) if side == 'left' else v.add_visitado(0, False) 
+                    v.add_visitado(0, True) if side == 'left' else v.add_visitado(0, False)
+
+                    self.number_sides_detected+=1
+
 
                 elif self.direction>=170 and self.direction<=190 and adjacentes[270] != True:
 
                     #v.add_adjacente(270, v1)
-                    v.add_visitado(270, True) if side == 'left' else v.add_visitado(270, False) 
+                    v.add_visitado(270, True) if side == 'left' else v.add_visitado(270, False)
+
+                    self.number_sides_detected+=1
+
 
         return v
     
