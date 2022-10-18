@@ -6,7 +6,7 @@ from math import *
 import xml.etree.ElementTree as ET
 
 
-import keyboard #!DELETE
+#import keyboard #!DELETE
 
 CELLROWS=7
 CELLCOLS=14
@@ -31,6 +31,10 @@ class MyRob(CRobLinkAngs):
 
         # ultimo vertice visitado
         self.last_vertice = None
+
+        # posicao inicial
+        self.inicio = (0,0)
+
 
         # lista de arestas detectadas
         self.adjacent_dict={
@@ -89,22 +93,77 @@ class MyRob(CRobLinkAngs):
                 if self.measures.returningLed==True:
                     self.setReturningLed(False)
                 self.wander()
-            
+
+    def createMatrix(self):
+
+        m = 21
+        n = 49
+  
+        matrix = [[0 for x in range(n)] for x in range(m)]
+
+        #matrix = [ [0] * 49 ] * 21 
+
+        # linha 11 e coluna 25
+        #matrix[10][24] = 1
+
+        for key in self.adjacent_dict.keys():
+
+            # arranjar os indices para a matrix do vertice novo
+
+            #print(key)
+
+            x_key = 10 + (self.inicio[1] - key[1])
+            y_key = 24 + (key[0] - self.inicio[0])
+
+            #print("x_key: " + str(x_key) + " y_key: " + str(y_key))
+
+            set_key = self.adjacent_dict[key]
+
+            for value in set_key:
+                
+                # numero de arestas
+                n_arestas = value[3]//2
+                if value[2] == 0:
+                    for i in range(1,n_arestas+1):
+                        matrix[x_key][y_key-i] = 1
+                elif value[2] == 90:
+                    for i in range(1,n_arestas+1):
+                        matrix[x_key+i][y_key] = 1
+                elif value[2] == 180:
+                    for i in range(1,n_arestas+1):
+                        matrix[x_key][y_key+i] = 1
+                elif value[2] == 270:
+                    for i in range(1,n_arestas+1):
+                        matrix[x_key-i][y_key] = 1
+
+        return matrix
+
+
 
     def wander(self):
-
-        if keyboard.is_pressed('q'):  # if key 'q' is pressed 
-            print(self.adjacent_dict)
             
 
-        #print('|'+''.join(self.measures.lineSensor).replace('1','█').replace('0',' ')+'|')
 
-        
+        #print(self.measures.time)
+
+
+        # Definir posição do robo
+        if self.measures.time<=2:
+            self.inicio = ( self.round_positions(self.measures.x), self.round_positions(self.measures.y) )
+
+
+        if int(self.simTime) - self.measures.time == 4800:
+
+            matrix = self.createMatrix()
+            print(matrix)
+
+            with open('mapa.txt', 'w') as f:
+                f.write('Create a new text file!')
+
+
+
         compass=self.measures.compass+180
-        #print(str(compass)+'     '+str(self.counter))
-
-        #print(self.measures.x,self.measures.y)
-        #print(self.vertices)
+        
 
         if self.counter>0:
           
@@ -203,7 +262,7 @@ class MyRob(CRobLinkAngs):
                 else:
                     right = 0
             
-            if self.can_turn('front'):
+            if self.can_turn('front') and (left == 0 or right == 0):
 
                 if self.decide('front'):
                     front = 1
@@ -213,9 +272,17 @@ class MyRob(CRobLinkAngs):
             #if left != None or right != None or front != None:
                 #print('left: '+str(left)+' front: '+str(front)+' right: '+str(right))
             if left != 1  and right != 1 and front != 1 and (left==0 or right==0 or front==0):
-                x=self.vertices[0].x
-                y=self.vertices[0].y
-                print(self.a_star_algorithm((self.round_positions(self.measures.x),self.round_positions(self.measures.y)),(x,y)))
+                
+                v_check = [v for v in self.vertices if v.visitados[0]==False or v.visitados[90]==False or v.visitados[180]==False or v.visitados[270]==False]
+                
+                if v_check==[]:
+                    print("TUDO PROCURADO")
+
+                v = v_check[0]
+
+                x=v.x
+                y=v.y
+                #print(self.a_star_algorithm((self.round_positions(self.measures.x),self.round_positions(self.measures.y)),(x,y)))
 
 
 
