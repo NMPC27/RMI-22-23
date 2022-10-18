@@ -104,7 +104,7 @@ class MyRob(CRobLinkAngs):
         #matrix = [ [0] * 49 ] * 21 
 
         # linha 11 e coluna 25
-        #matrix[10][24] = 1
+        matrix[10][24] = 3
 
         for key in self.adjacent_dict.keys():
 
@@ -128,13 +128,13 @@ class MyRob(CRobLinkAngs):
                         matrix[x_key][y_key-i] = 1
                 elif value[2] == 90:
                     for i in range(1,n_arestas+1):
-                        matrix[x_key+i][y_key] = 1
+                        matrix[x_key+i][y_key] = 2
                 elif value[2] == 180:
                     for i in range(1,n_arestas+1):
                         matrix[x_key][y_key+i] = 1
                 elif value[2] == 270:
                     for i in range(1,n_arestas+1):
-                        matrix[x_key-i][y_key] = 1
+                        matrix[x_key-i][y_key] = 2
 
         return matrix
 
@@ -152,14 +152,24 @@ class MyRob(CRobLinkAngs):
             self.inicio = ( self.round_positions(self.measures.x), self.round_positions(self.measures.y) )
 
 
-        if int(self.simTime) - self.measures.time == 4800:
+        if int(self.simTime) - self.measures.time == 1000:
 
             matrix = self.createMatrix()
-            print(matrix)
+            #print(matrix)
 
             with open('mapa.txt', 'w') as f:
-                f.write('Create a new text file!')
-
+                for i in range(len(matrix)):
+                    for j in range(len(matrix[0])):
+                        if matrix[i][j] == 0:
+                            f.write(' ')
+                        elif matrix[i][j] == 1:
+                            f.write('-')
+                        elif matrix[i][j] == 2:
+                            f.write('|')
+                        elif matrix[i][j] == 3:
+                            f.write('I')
+                        
+                    f.write('\n')
 
 
         compass=self.measures.compass+180
