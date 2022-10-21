@@ -124,21 +124,27 @@ class MyRob(CRobLinkAngs):
                 # numero de arestas
                 n_arestas = value[3]//2
                 if value[2] == 0:
-                    for i in range(1,n_arestas+1):
+                    for i in range(1,n_arestas+1,2):
                         matrix[x_key][y_key-i] = 1
                 elif value[2] == 90:
-                    for i in range(1,n_arestas+1):
+                    for i in range(1,n_arestas+1,2):
                         matrix[x_key+i][y_key] = 2
                 elif value[2] == 180:
-                    for i in range(1,n_arestas+1):
+                    for i in range(1,n_arestas+1,2):
                         matrix[x_key][y_key+i] = 1
                 elif value[2] == 270:
-                    for i in range(1,n_arestas+1):
+                    for i in range(1,n_arestas+1,2):
                         matrix[x_key-i][y_key] = 2
 
         return matrix
 
 
+    def check_falses(self):
+        for i in range(0,len(self.vertices)):
+            if False in self.vertices[i].values:
+                return False
+
+        return True
 
     def wander(self):
             
@@ -152,7 +158,7 @@ class MyRob(CRobLinkAngs):
             self.inicio = ( self.round_positions(self.measures.x), self.round_positions(self.measures.y) )
 
 
-        if int(self.simTime) - self.measures.time == 1000:
+        if ( (int(self.simTime) - self.measures.time) // 200 == 0 and self.check_falses() ) or  ( (int(self.simTime) - self.measures.time) <= 200) :
 
             matrix = self.createMatrix()
             #print(matrix)
@@ -170,6 +176,8 @@ class MyRob(CRobLinkAngs):
                             f.write('I')
                         
                     f.write('\n')
+
+            self.finish()
 
 
         compass=self.measures.compass+180
@@ -229,22 +237,42 @@ class MyRob(CRobLinkAngs):
             
             else:
                 if self.turn_180 == 1:
-                    
                     value = 90 * round(self.direction / 90)
                     if value == 360:
                         value = 0
 
-                    if value>=180:
-                        if value-180<= compass:
+                    print(value)
+                    print(compass)
+
+                    if value==180:
+                        if not (compass>=350 or compass<=10 ):
+                            self.driveMotors(0.15,-0.15)
+                        else:
+                            self.turn_180=0
+                            self.counter=0
+ 
+
+                    elif value==270:
+                        #print('TURN 180 111')
+                        if 90<= compass:
+                            #print('TURN 180 222')
                             self.driveMotors(0.15,-0.15)
                         else:
                             self.turn_180=0
                             self.counter=0
 
                         
-                    else:
-                        if value + 180 >= compass:
-                            self.driveMotors(0.15,-0.15)
+                    elif value==90:
+                        if 270 >= compass:
+                            self.driveMotors(-0.15,0.15)
+                        else:
+                            self.turn_180=0
+                            self.counter=0
+
+                    elif value==0:
+                        
+                        if not (compass>=170 and compass<=190):
+                            self.driveMotors(-0.15,0.15)
                         else:
                             self.turn_180=0
                             self.counter=0
@@ -338,8 +366,16 @@ class MyRob(CRobLinkAngs):
                 self.turn_180=1
                 self.counter+= 1
                 self.direction=compass
-                self.driveMotors(0.15,-0.15)
+
+                value = 90 * round(self.direction / 90)
+                if value == 360:
+                    value = 0
+                if value == 0 or value == 90:
+                    self.driveMotors(-0.15,0.15)
+                else:
+                    self.driveMotors(0.15,-0.15)
                 self.check_intersections('back')
+                print('-------------------------------------')
                  
             
             else:
