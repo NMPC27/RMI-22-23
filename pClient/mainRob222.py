@@ -141,7 +141,7 @@ class MyRob(CRobLinkAngs):
 
     def check_falses(self):
         for i in range(0,len(self.vertices)):
-            if False in self.vertices[i].values:
+            if False in self.vertices[i].visitados.values():
                 return False
 
         return True
@@ -158,7 +158,7 @@ class MyRob(CRobLinkAngs):
             self.inicio = ( self.round_positions(self.measures.x), self.round_positions(self.measures.y) )
 
 
-        if ( (int(self.simTime) - self.measures.time) // 200 == 0 and self.check_falses() ) or  ( (int(self.simTime) - self.measures.time) <= 200) :
+        if ( (int(self.simTime) - self.measures.time) <= 1500 and self.check_falses() ) or  ( (int(self.simTime) - self.measures.time) <= 200) :
 
             matrix = self.createMatrix()
             #print(matrix)
@@ -309,18 +309,18 @@ class MyRob(CRobLinkAngs):
 
             #if left != None or right != None or front != None:
                 #print('left: '+str(left)+' front: '+str(front)+' right: '+str(right))
-            if left != 1  and right != 1 and front != 1 and (left==0 or right==0 or front==0):
+            #if left != 1  and right != 1 and front != 1 and (left==0 or right==0 or front==0):
                 
-                v_check = [v for v in self.vertices if v.visitados[0]==False or v.visitados[90]==False or v.visitados[180]==False or v.visitados[270]==False]
+            #    v_check = [v for v in self.vertices if v.visitados[0]==False or v.visitados[90]==False or v.visitados[180]==False or v.visitados[270]==False]
                 
-                if v_check==[]:
-                    print("TUDO PROCURADO")
+            #    if v_check==[]:
+            #        print("TUDO PROCURADO")
 
-                v = v_check[0]
+            #    v = v_check[0]
 
-                x=v.x
-                y=v.y
-                #print(self.a_star_algorithm((self.round_positions(self.measures.x),self.round_positions(self.measures.y)),(x,y)))
+            #    x=v.x
+            #    y=v.y
+            #    #print(self.a_star_algorithm((self.round_positions(self.measures.x),self.round_positions(self.measures.y)),(x,y)))
 
 
 
@@ -623,9 +623,8 @@ class MyRob(CRobLinkAngs):
         else:
             v.add_visitado(value+180, True)
         
-        adjacentes = v.get_visitados()
         if side =='front':
-            if adjacentes[value] !=True: 
+            if v.visitados[value] !=True: 
                 v.add_visitado(value, False)
 
         else:
@@ -633,7 +632,7 @@ class MyRob(CRobLinkAngs):
             #cruzamento á direita
             if self.measures.lineSensor[6]=='1' and self.measures.lineSensor[5]=='1':
 
-                if self.direction>=80 and self.direction<=100 and adjacentes[0] != True:
+                if self.direction>=80 and self.direction<=100 and v.visitados[0] != True:
                         
                     #v.add_adjacente(0, v1)
                     v.add_visitado(0, True) if side == 'right' else v.add_visitado(0, False)
@@ -641,7 +640,7 @@ class MyRob(CRobLinkAngs):
                     self.number_sides_detected+=1
 
 
-                elif (self.direction>=350 or self.direction<=10) and adjacentes[270] != True:
+                elif (self.direction>=350 or self.direction<=10) and v.visitados[270] != True:
                     #print('check adjacentes right')
                         
                     #v.add_adjacente(270, v1)
@@ -651,7 +650,7 @@ class MyRob(CRobLinkAngs):
 
 
                         
-                elif self.direction>=260 and self.direction<=280 and adjacentes[180] != True:
+                elif self.direction>=260 and self.direction<=280 and v.visitados[180] != True:
                         
                     #v.add_adjacente(180, v1)
                     v.add_visitado(180, True) if side == 'right' else v.add_visitado(180, False)
@@ -660,7 +659,7 @@ class MyRob(CRobLinkAngs):
 
 
 
-                elif self.direction>=170 and self.direction<=190 and adjacentes[90] != True: 
+                elif self.direction>=170 and self.direction<=190 and v.visitados[90] != True: 
 
                     #v.add_adjacente(90, v1)
                     v.add_visitado(90, True) if side == 'right' else v.add_visitado(90, False)
@@ -672,7 +671,7 @@ class MyRob(CRobLinkAngs):
 
             #cruzamento á esquerda
             if self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1':
-                if self.direction>=80 and self.direction<=100 and adjacentes[180] != True:
+                if self.direction>=80 and self.direction<=100 and v.visitados[180] != True:
                         
                     #v.add_adjacente(180, v1)
                     v.add_visitado(180, True) if side == 'left' else v.add_visitado(180, False)
@@ -680,7 +679,7 @@ class MyRob(CRobLinkAngs):
                     self.number_sides_detected+=1
 
 
-                elif (self.direction>=350 or self.direction<=10) and adjacentes[90] != True:
+                elif (self.direction>=350 or self.direction<=10) and v.visitados[90] != True:
                     #print('check adjacentes left')
                         
                     #v.add_adjacente(90, v1)
@@ -689,7 +688,7 @@ class MyRob(CRobLinkAngs):
                     self.number_sides_detected+=1
 
                         
-                elif self.direction>=260 and self.direction<=280 and adjacentes[0] != True:
+                elif self.direction>=260 and self.direction<=280 and v.visitados[0] != True:
                         
                     #v.add_adjacente(0, v1)
                     v.add_visitado(0, True) if side == 'left' else v.add_visitado(0, False)
@@ -697,7 +696,7 @@ class MyRob(CRobLinkAngs):
                     self.number_sides_detected+=1
 
 
-                elif self.direction>=170 and self.direction<=190 and adjacentes[270] != True:
+                elif self.direction>=170 and self.direction<=190 and v.visitados[270] != True:
 
                     #v.add_adjacente(270, v1)
                     v.add_visitado(270, True) if side == 'left' else v.add_visitado(270, False)
