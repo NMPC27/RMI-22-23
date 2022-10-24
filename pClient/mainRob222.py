@@ -146,6 +146,65 @@ class MyRob(CRobLinkAngs):
 
         return True
 
+    def check_false_front(self,case):
+
+        v_check = [v for v in self.vertices if v.x == self.round_positions(self.measures.x) and v.y == self.round_positions(self.measures.y)]
+        
+        if len(v_check) != 0:
+
+            v = v_check[0]
+
+            value = 90 * round(self.direction / 90)
+            if value == 360:
+                value = 0
+
+            if case == "fe":
+
+                if value == 0:
+                    if v.visitados[270] != None: 
+                        return False
+                    else:
+                        return True
+                elif value == 90:
+                    if v.visitados[0] != None: 
+                        return False
+                    else:
+                        return True
+                elif value == 180:
+                    if v.visitados[90] != None: 
+                        return False
+                    else:
+                        return True
+                elif value == 270:
+                    if v.visitados[180] != None: 
+                        return False
+                    else:
+                        return True
+
+
+            if case == "fd":
+                if value == 0:
+                    if v.visitados[90] != None: 
+                        return False
+                    else:
+                        return True
+                elif value == 90:
+                    if v.visitados[180] != None: 
+                        return False
+                    else:
+                        return True
+                elif value == 180:
+                    if v.visitados[270] != None: 
+                        return False
+                    else:
+                        return True
+                elif value == 270:
+                    if v.visitados[0] != None: 
+                        return False
+                    else:
+                        return True
+
+
     def wander(self):
             
 
@@ -177,6 +236,13 @@ class MyRob(CRobLinkAngs):
                         
                     f.write('\n')
 
+            print(self.adjacent_dict)
+            for i in self.vertices:
+                print("-------------")
+                print(str(i.x) + str(i.y))
+                print(i.visitados)
+                print("-------------")
+            print(self.check_falses())
             self.finish()
 
 
@@ -206,7 +272,9 @@ class MyRob(CRobLinkAngs):
 
                 if self.measures.lineSensor[0]=='1' and self.measures.lineSensor[1]=='1' and self.number_sides_detected!=2:
                     #print('frente e direita')
-                    self.check_intersections('front')
+                    if self.check_false_front("fd"):
+                        self.check_intersections('front')
+                    
 
                     
 
@@ -233,7 +301,8 @@ class MyRob(CRobLinkAngs):
 
                 if self.measures.lineSensor[5]=='1' and self.measures.lineSensor[6]=='1' and self.number_sides_detected!=2:
                     #print('frente e esquerda')
-                    self.check_intersections('front')
+                    if self.check_false_front("fe"):
+                        self.check_intersections('front')
             
             else:
                 if self.turn_180 == 1:
@@ -241,8 +310,8 @@ class MyRob(CRobLinkAngs):
                     if value == 360:
                         value = 0
 
-                    print(value)
-                    print(compass)
+                    # print(value)
+                    # print(compass)
 
                     if value==180:
                         if not (compass>=350 or compass<=10 ):
@@ -379,6 +448,8 @@ class MyRob(CRobLinkAngs):
                  
             
             else:
+                if front != None:
+                    self.check_intersections(None)
                 self.driveMotors(0.12,0.12)
 
     # funcao que decide se o robo devia virar para uma dada direcao
@@ -572,7 +643,22 @@ class MyRob(CRobLinkAngs):
             
                 if self.last_vertice not in self.adjacent_dict.keys():
                     self.adjacent_dict[self.last_vertice] = set()
-                self.adjacent_dict[(self.last_vertice[0],self.last_vertice[1])].add((self.round_positions(self.measures.x),self.round_positions(self.measures.y),value,cost))
+
+                if self.adjacent_dict[(self.last_vertice[0],self.last_vertice[1])] == set():
+                    self.adjacent_dict[(self.last_vertice[0],self.last_vertice[1])].add((self.round_positions(self.measures.x),self.round_positions(self.measures.y),value,cost))
+
+
+                for s in self.adjacent_dict[(self.last_vertice[0],self.last_vertice[1])].copy():
+                    if s[2] == value and s[3] > cost:
+                        self.adjacent_dict[(self.last_vertice[0],self.last_vertice[1])].remove(s)
+                        self.adjacent_dict[(self.last_vertice[0],self.last_vertice[1])].add((self.round_positions(self.measures.x),self.round_positions(self.measures.y),value,cost))
+                        break
+                    elif s[2] == value and s[3] < cost:
+                        break
+                    else:
+                        self.adjacent_dict[(self.last_vertice[0],self.last_vertice[1])].add((self.round_positions(self.measures.x),self.round_positions(self.measures.y),value,cost))
+
+
 
                 if value>=180:
                     value-=180
@@ -581,7 +667,21 @@ class MyRob(CRobLinkAngs):
 
                 if (self.round_positions(self.measures.x),self.round_positions(self.measures.y)) not in self.adjacent_dict.keys():
                     self.adjacent_dict[(self.round_positions(self.measures.x),self.round_positions(self.measures.y))] = set()
-                self.adjacent_dict[(self.round_positions(self.measures.x),self.round_positions(self.measures.y))].add((self.last_vertice[0],self.last_vertice[1],value,cost))
+
+                if self.adjacent_dict[(self.round_positions(self.measures.x),self.round_positions(self.measures.y))] == set():
+                    self.adjacent_dict[(self.round_positions(self.measures.x),self.round_positions(self.measures.y))].add((self.last_vertice[0],self.last_vertice[1],value,cost))    
+                
+
+                for s in self.adjacent_dict[(self.round_positions(self.measures.x),self.round_positions(self.measures.y))].copy():
+                    if s[2] == value and s[3] > cost:
+                        self.adjacent_dict[(self.round_positions(self.measures.x),self.round_positions(self.measures.y))].remove(s)
+                        self.adjacent_dict[(self.round_positions(self.measures.x),self.round_positions(self.measures.y))].add((self.last_vertice[0],self.last_vertice[1],value,cost))
+
+                        break
+                    elif s[2] == value and s[3] < cost:
+                        break
+                    else:
+                        self.adjacent_dict[(self.round_positions(self.measures.x),self.round_positions(self.measures.y))].add((self.last_vertice[0],self.last_vertice[1],value,cost))
         
         
         self.last_vertice = (self.round_positions(self.measures.x),self.round_positions(self.measures.y))
