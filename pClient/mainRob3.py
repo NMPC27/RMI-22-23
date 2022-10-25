@@ -5,6 +5,9 @@ from croblink import *
 from math import *
 import xml.etree.ElementTree as ET
 
+from itertools import permutations
+
+
 
 #import keyboard #!DELETE
 
@@ -34,6 +37,9 @@ class MyRob(CRobLinkAngs):
 
         # posicao inicial
         self.inicio = (0,0)
+
+        # set com as coordenadas dos checkpoints a usar
+        self.checkpoints = set()
 
 
         # lista de arestas detectadas
@@ -205,11 +211,37 @@ class MyRob(CRobLinkAngs):
                         return True
 
 
+    def calculate_cost(self,caminho):
+
+
+        print(caminho)
+
+        cost=0
+        for i in range(len(caminho)-1):
+            
+            cost+=dist(caminho[i], caminho[i+1])
+            
+        print(cost)
+
+        return cost
+
+
     def wander(self):
             
 
 
         #print(self.measures.time)
+
+        
+
+        if self.measures.ground != -1:
+
+            print(self.measures.ground)
+
+            self.check_intersections(None)
+
+            self.checkpoints.add( (self.round_positions(self.measures.x), self.round_positions(self.measures.y))  ) 
+
 
 
         # Definir posição do robo
@@ -219,22 +251,7 @@ class MyRob(CRobLinkAngs):
 
         if ( (int(self.simTime) - self.measures.time) <= 1500 and self.check_falses() ) or  ( (int(self.simTime) - self.measures.time) <= 200) :
 
-            matrix = self.createMatrix()
-            #print(matrix)
-
-            with open('mapa.txt', 'w') as f:
-                for i in range(len(matrix)):
-                    for j in range(len(matrix[0])):
-                        if matrix[i][j] == 0:
-                            f.write(' ')
-                        elif matrix[i][j] == 1:
-                            f.write('-')
-                        elif matrix[i][j] == 2:
-                            f.write('|')
-                        elif matrix[i][j] == 3:
-                            f.write('I')
-                        
-                    f.write('\n')
+            
 
             #print(self.adjacent_dict)
             #for i in self.vertices:
@@ -243,6 +260,47 @@ class MyRob(CRobLinkAngs):
                 #print(i.visitados)
                 #print("-------------")
             #print(self.check_falses())
+            print(self.checkpoints)
+
+            
+
+            d = self.checkpoints
+            for i in d:
+                first_checkpoint = i
+                d.remove(i)
+                break
+
+            best_caminho = []
+
+            for i in permutations(d,len(d)):
+
+                caminho = self.a_star_algorithm(first_checkpoint, i[0])
+                
+                if caminho == None:
+                    break
+
+                for j in range(len(i)-1):
+                    temp = self.a_star_algorithm(i[j], i[j+1])
+
+                    if temp == None:
+                        break
+
+                    temp.pop(0)
+                    caminho = caminho + temp          
+                if temp == None:
+                    break
+
+                temp = self.a_star_algorithm(i[-1],first_checkpoint)
+                temp.pop(0)
+                caminho = caminho + temp
+
+                # calcular custo do caminho
+                print('-----------------------')
+                self.calculate_cost(caminho)
+
+
+
+
             self.finish()
 
 
