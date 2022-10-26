@@ -41,6 +41,9 @@ class MyRob(CRobLinkAngs):
         # set com as coordenadas dos checkpoints a usar
         self.checkpoints = set()
 
+        # ultimo ground id detetado
+        self.last_ground = -2 
+
 
         # lista de arestas detectadas
         self.adjacent_dict={
@@ -214,33 +217,81 @@ class MyRob(CRobLinkAngs):
     def calculate_cost(self,caminho):
 
 
-        print(caminho)
+        #print(caminho)
 
         cost=0
         for i in range(len(caminho)-1):
             
             cost+=dist(caminho[i], caminho[i+1])
             
-        print(cost)
+        #print(cost)
 
         return cost
 
+    def print_path_file(self,caminho):
+
+        initial_pos = caminho[0]
+
+        last_temp1 = None
+        last_temp2 = None
+
+        with open('plan.txt', 'w') as f:
+                for i in caminho:
+                    temp1 = initial_pos[0] - i[0]
+                    temp2 = initial_pos[1] - i[1]
+
+                    f.write(str(temp1))
+                    f.write(" ")
+                    f.write(str(temp2))    
+                    f.write('\n')
+
+                    #if last_temp1 != None and (temp1 - last_temp1 != 2 and temp1 - last_temp1 != -2):
+    
+                    #    dif = temp1 - last_temp1
+                        
+                    #    for i in range(1,abs(dif//2)+1):
+                    #        if dif < 0:
+                    #            f.write(str(last_temp1-2*i) + " " + str(last_temp2))
+                    #            f.write('\n')
+                    #        if dif > 0:
+                    #            f.write(str(last_temp1+2*i) + " " + str(last_temp2))
+                    #            f.write('\n')
+                            
+
+                    #elif last_temp2 != None and temp2 - last_temp2 != 2 and temp2 - last_temp2 != -2:
+                    #    dif = temp2 - last_temp2
+                        
+                    #    for i in range(1,abs(dif//2)+1):
+                    #        if dif < 0:
+                    #            f.write(str(last_temp1) + " " + str(last_temp2-2*i))
+                    #            f.write('\n')
+                    #        if dif > 0:
+                    #            f.write(str(last_temp1) + " " + str(last_temp2+2*i))
+                    #            f.write('\n')
+                    #else:
+                    #    f.write(str(temp1))
+                    #    f.write(" ")
+                    #    f.write(str(temp2))    
+                    #    f.write('\n')
+
+                    last_temp1 = temp1
+                    last_temp2 = temp2
+
 
     def wander(self):
-            
 
+        compass=self.measures.compass+180
 
-        #print(self.measures.time)
+        if self.measures.ground != -1 and self.measures.ground != self.last_ground:
 
-        
+            #print(self.measures.ground)
 
-        if self.measures.ground != -1:
-
-            print(self.measures.ground)
-
+            self.direction = compass
             self.check_intersections(None)
 
             self.checkpoints.add( (self.round_positions(self.measures.x), self.round_positions(self.measures.y))  ) 
+
+            self.last_ground = self.measures.ground
 
 
 
@@ -251,8 +302,6 @@ class MyRob(CRobLinkAngs):
 
         if ( (int(self.simTime) - self.measures.time) <= 1500 and self.check_falses() ) or  ( (int(self.simTime) - self.measures.time) <= 200) :
 
-            
-
             #print(self.adjacent_dict)
             #for i in self.vertices:
                 #print("-------------")
@@ -260,51 +309,66 @@ class MyRob(CRobLinkAngs):
                 #print(i.visitados)
                 #print("-------------")
             #print(self.check_falses())
-            print(self.checkpoints)
 
+            matrix = self.createMatrix()
+            #print(matrix)
+
+            with open('mapa.txt', 'w') as f:
+                for i in range(len(matrix)):
+                    for j in range(len(matrix[0])):
+                        if matrix[i][j] == 0:
+                            f.write(' ')
+                        elif matrix[i][j] == 1:
+                            f.write('-')
+                        elif matrix[i][j] == 2:
+                            f.write('|')
+                        elif matrix[i][j] == 3:
+                            f.write('I')
+                        
+                    f.write('\n')
             
+            print(self.checkpoints)       
 
             d = self.checkpoints
-            for i in d:
-                first_checkpoint = i
-                d.remove(i)
-                break
+            d.remove(self.inicio)
+            print(d)
 
             best_caminho = []
 
             for i in permutations(d,len(d)):
 
-                caminho = self.a_star_algorithm(first_checkpoint, i[0])
+                caminho = self.a_star_algorithm(self.inicio, i[0])
                 
                 if caminho == None:
-                    break
+                    continue
 
                 for j in range(len(i)-1):
                     temp = self.a_star_algorithm(i[j], i[j+1])
 
                     if temp == None:
-                        break
+                        continue
 
                     temp.pop(0)
                     caminho = caminho + temp          
                 if temp == None:
-                    break
+                    continue
 
-                temp = self.a_star_algorithm(i[-1],first_checkpoint)
+                temp = self.a_star_algorithm(i[-1],self.inicio)
                 temp.pop(0)
                 caminho = caminho + temp
 
                 # calcular custo do caminho
-                print('-----------------------')
+                #print('-----------------------')
                 self.calculate_cost(caminho)
-
-
+                if best_caminho == [] or ( self.calculate_cost(caminho) < self.calculate_cost(best_caminho) ):
+                    best_caminho = caminho
+            
+            print(best_caminho)
+            print(self.calculate_cost(best_caminho))
+            self.print_path_file(best_caminho)
 
 
             self.finish()
-
-
-        compass=self.measures.compass+180
         
 
         if self.counter>0:
@@ -745,7 +809,7 @@ class MyRob(CRobLinkAngs):
         self.last_vertice = (self.round_positions(self.measures.x),self.round_positions(self.measures.y))
 
 
-        if  v_check == []:
+        if  v_check == [] and side !=None:
 
             v = Vertice(self.round_positions(self.measures.x),self.round_positions(self.measures.y))
             
@@ -758,7 +822,7 @@ class MyRob(CRobLinkAngs):
 
         
         #no caso do vertice já existir, verificar se o caminho já existe ou se é um caminho novo
-        else:
+        elif side !=None:
             v = v_check[0]
             v = self.check_adjacentes(v,side)
 
@@ -911,7 +975,7 @@ class MyRob(CRobLinkAngs):
 
                 reconst_path.reverse()
 
-                print('Path found: {}'.format(reconst_path))
+                #print('Path found: {}'.format(reconst_path))
                 return reconst_path
 
             # for all neighbors of the current node do

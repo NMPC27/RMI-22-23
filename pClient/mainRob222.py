@@ -687,7 +687,7 @@ class MyRob(CRobLinkAngs):
         self.last_vertice = (self.round_positions(self.measures.x),self.round_positions(self.measures.y))
 
 
-        if  v_check == []:
+        if  v_check == [] and side !=None:
 
             v = Vertice(self.round_positions(self.measures.x),self.round_positions(self.measures.y))
             
@@ -700,7 +700,7 @@ class MyRob(CRobLinkAngs):
 
         
         #no caso do vertice já existir, verificar se o caminho já existe ou se é um caminho novo
-        else:
+        elif side !=None:
             v = v_check[0]
             v = self.check_adjacentes(v,side)
 
