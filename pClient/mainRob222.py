@@ -648,16 +648,20 @@ class MyRob(CRobLinkAngs):
                     self.adjacent_dict[(self.last_vertice[0],self.last_vertice[1])].add((self.round_positions(self.measures.x),self.round_positions(self.measures.y),value,cost))
 
 
+                temp = 0
                 for s in self.adjacent_dict[(self.last_vertice[0],self.last_vertice[1])].copy():
                     if s[2] == value and s[3] > cost:
                         self.adjacent_dict[(self.last_vertice[0],self.last_vertice[1])].remove(s)
                         self.adjacent_dict[(self.last_vertice[0],self.last_vertice[1])].add((self.round_positions(self.measures.x),self.round_positions(self.measures.y),value,cost))
+                        temp = 1
                         break
                     elif s[2] == value and s[3] < cost:
+                        temp = 1
                         break
-                    else:
-                        self.adjacent_dict[(self.last_vertice[0],self.last_vertice[1])].add((self.round_positions(self.measures.x),self.round_positions(self.measures.y),value,cost))
-
+                
+                if temp == 0:
+                    self.adjacent_dict[(self.last_vertice[0],self.last_vertice[1])].add((self.round_positions(self.measures.x),self.round_positions(self.measures.y),value,cost))
+                
 
 
                 if value>=180:
@@ -672,16 +676,21 @@ class MyRob(CRobLinkAngs):
                     self.adjacent_dict[(self.round_positions(self.measures.x),self.round_positions(self.measures.y))].add((self.last_vertice[0],self.last_vertice[1],value,cost))    
                 
 
+                temp = 0
                 for s in self.adjacent_dict[(self.round_positions(self.measures.x),self.round_positions(self.measures.y))].copy():
                     if s[2] == value and s[3] > cost:
                         self.adjacent_dict[(self.round_positions(self.measures.x),self.round_positions(self.measures.y))].remove(s)
                         self.adjacent_dict[(self.round_positions(self.measures.x),self.round_positions(self.measures.y))].add((self.last_vertice[0],self.last_vertice[1],value,cost))
+                        temp = 1
+                        break
 
-                        break
                     elif s[2] == value and s[3] < cost:
+                        temp = 1
                         break
-                    else:
-                        self.adjacent_dict[(self.round_positions(self.measures.x),self.round_positions(self.measures.y))].add((self.last_vertice[0],self.last_vertice[1],value,cost))
+                
+                if temp == 0:
+                    self.adjacent_dict[(self.round_positions(self.measures.x),self.round_positions(self.measures.y))].add((self.last_vertice[0],self.last_vertice[1],value,cost))
+                        
         
         
         self.last_vertice = (self.round_positions(self.measures.x),self.round_positions(self.measures.y))
