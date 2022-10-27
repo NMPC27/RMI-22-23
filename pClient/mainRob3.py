@@ -237,42 +237,50 @@ class MyRob(CRobLinkAngs):
 
         with open('plan.txt', 'w') as f:
                 for i in caminho:
-                    temp1 = initial_pos[0] - i[0]
-                    temp2 = initial_pos[1] - i[1]
+                    
+                    temp1 = i[0] - initial_pos[0]
+                    temp2 = i[1] - initial_pos[1]
+                    
 
+                    if last_temp1 != None and (temp1 - last_temp1 != 2 and temp1 - last_temp1 != -2 and temp1 - last_temp1 != 0):
+    
+                        dif = temp1 - last_temp1
+                        
+                        for i in range(1,abs(dif//2)):
+                            if dif < 0:
+                                f.write(str(last_temp1-2*i))
+                                f.write(" ")
+                                f.write(str(last_temp2))    
+                                f.write('\n')
+
+                            if dif > 0:                               
+                                f.write(str(last_temp1+2*i))
+                                f.write(" ")
+                                f.write(str(last_temp2))    
+                                f.write('\n')
+                            
+
+                    elif last_temp2 != None and temp2 - last_temp2 != 2 and temp2 - last_temp2 != -2 and temp2 - last_temp2 != 0:
+                        
+                        dif = temp2 - last_temp2
+                        
+                        for i in range(1,abs(dif//2)):
+                            if dif < 0:                               
+                                f.write(str(last_temp1))
+                                f.write(" ")
+                                f.write(str(last_temp2-2*i))    
+                                f.write('\n')
+
+                            if dif > 0:
+                                f.write(str(last_temp1))
+                                f.write(" ")
+                                f.write(str(last_temp2+2*i))    
+                                f.write('\n')
+                    
                     f.write(str(temp1))
                     f.write(" ")
                     f.write(str(temp2))    
                     f.write('\n')
-
-                    #if last_temp1 != None and (temp1 - last_temp1 != 2 and temp1 - last_temp1 != -2):
-    
-                    #    dif = temp1 - last_temp1
-                        
-                    #    for i in range(1,abs(dif//2)+1):
-                    #        if dif < 0:
-                    #            f.write(str(last_temp1-2*i) + " " + str(last_temp2))
-                    #            f.write('\n')
-                    #        if dif > 0:
-                    #            f.write(str(last_temp1+2*i) + " " + str(last_temp2))
-                    #            f.write('\n')
-                            
-
-                    #elif last_temp2 != None and temp2 - last_temp2 != 2 and temp2 - last_temp2 != -2:
-                    #    dif = temp2 - last_temp2
-                        
-                    #    for i in range(1,abs(dif//2)+1):
-                    #        if dif < 0:
-                    #            f.write(str(last_temp1) + " " + str(last_temp2-2*i))
-                    #            f.write('\n')
-                    #        if dif > 0:
-                    #            f.write(str(last_temp1) + " " + str(last_temp2+2*i))
-                    #            f.write('\n')
-                    #else:
-                    #    f.write(str(temp1))
-                    #    f.write(" ")
-                    #    f.write(str(temp2))    
-                    #    f.write('\n')
 
                     last_temp1 = temp1
                     last_temp2 = temp2
@@ -327,11 +335,11 @@ class MyRob(CRobLinkAngs):
                         
                     f.write('\n')
             
-            print(self.checkpoints)       
+            #print(self.checkpoints)       
 
             d = self.checkpoints
             d.remove(self.inicio)
-            print(d)
+            #print(d)
 
             best_caminho = []
 
@@ -359,7 +367,7 @@ class MyRob(CRobLinkAngs):
 
                 # calcular custo do caminho
                 #print('-----------------------')
-                self.calculate_cost(caminho)
+                #self.calculate_cost(caminho)
                 if best_caminho == [] or ( self.calculate_cost(caminho) < self.calculate_cost(best_caminho) ):
                     best_caminho = caminho
             
