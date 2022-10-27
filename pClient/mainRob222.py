@@ -389,7 +389,7 @@ class MyRob(CRobLinkAngs):
 
             #    x=v.x
             #    y=v.y
-            #    #print(self.a_star_algorithm((self.round_positions(self.measures.x),self.round_positions(self.measures.y)),(x,y)))
+            #    #print(self.dijkstra_algorithm((self.round_positions(self.measures.x),self.round_positions(self.measures.y)),(x,y)))
 
 
 
@@ -819,7 +819,7 @@ class MyRob(CRobLinkAngs):
     def round_positions(self,number):
         return 2 * round(number / 2)
         
-    def a_star_algorithm(self, start_node, stop_node):
+    def dijkstra_algorithm(self, start_node, stop_node):
         # open_list is a list of nodes which have been visited, but who's neighbors
         # haven't all been inspected, starts off with the start node
         # closed_list is a list of nodes which have been visited

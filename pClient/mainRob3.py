@@ -345,13 +345,13 @@ class MyRob(CRobLinkAngs):
 
             for i in permutations(d,len(d)):
 
-                caminho = self.a_star_algorithm(self.inicio, i[0])
+                caminho = self.dijkstra_algorithm(self.inicio, i[0])
                 
                 if caminho == None:
                     continue
 
                 for j in range(len(i)-1):
-                    temp = self.a_star_algorithm(i[j], i[j+1])
+                    temp = self.dijkstra_algorithm(i[j], i[j+1])
 
                     if temp == None:
                         continue
@@ -361,7 +361,7 @@ class MyRob(CRobLinkAngs):
                 if temp == None:
                     continue
 
-                temp = self.a_star_algorithm(i[-1],self.inicio)
+                temp = self.dijkstra_algorithm(i[-1],self.inicio)
                 temp.pop(0)
                 caminho = caminho + temp
 
@@ -519,7 +519,7 @@ class MyRob(CRobLinkAngs):
 
             #    x=v.x
             #    y=v.y
-            #    #print(self.a_star_algorithm((self.round_positions(self.measures.x),self.round_positions(self.measures.y)),(x,y)))
+            #    #print(self.dijkstra_algorithm((self.round_positions(self.measures.x),self.round_positions(self.measures.y)),(x,y)))
 
 
 
@@ -948,7 +948,7 @@ class MyRob(CRobLinkAngs):
     def round_positions(self,number):
         return 2 * round(number / 2)
         
-    def a_star_algorithm(self, start_node, stop_node):
+    def dijkstra_algorithm(self, start_node, stop_node):
         # open_list is a list of nodes which have been visited, but who's neighbors
         # haven't all been inspected, starts off with the start node
         # closed_list is a list of nodes which have been visited
