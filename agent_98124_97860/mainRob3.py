@@ -311,7 +311,7 @@ class MyRob(CRobLinkAngs):
             self.inicio = ( self.round_positions(self.measures.x), self.round_positions(self.measures.y) )
 
 
-        if ( (int(self.simTime) - self.measures.time) <= 1500 and self.check_falses() ) or  ( (int(self.simTime) - self.measures.time) <= 200) :
+        if ( (int(self.simTime) - self.measures.time) <= 50) :
 
             #print(self.adjacent_dict)
             #for i in self.vertices:
@@ -509,6 +509,8 @@ class MyRob(CRobLinkAngs):
                 else:
                     front = 0
 
+                #print(front)
+
             #if left != None or right != None or front != None:
                 #print('left: '+str(left)+' front: '+str(front)+' right: '+str(right))
             #if left != 1  and right != 1 and front != 1 and (left==0 or right==0 or front==0):
@@ -528,10 +530,10 @@ class MyRob(CRobLinkAngs):
             ran = None
             if left == 0 and right == 0:
                 ran = random.random()
-                if ran <= 0.6:
-                    print('left')
-                else:
-                    print('right')
+                # if ran <= 0.6:
+                #     print('left')
+                # else:
+                #     print('right')
 
 
             if (left == 1 ) or (left==0 and right==None and front==None) or (ran!=None and ran <= 0.6) : ##cruzamento
@@ -986,7 +988,7 @@ class MyRob(CRobLinkAngs):
                     n = v
 
             if n == None:
-                print('Path does not exist!')
+                #print('Path does not exist!')
                 return None
 
             # if the current node is the stop_node
@@ -1033,7 +1035,7 @@ class MyRob(CRobLinkAngs):
             open_list.remove(n)
             closed_list.add(n)
 
-        print('Path does not exist!')
+        #print('Path does not exist!')
         return None
 
 
