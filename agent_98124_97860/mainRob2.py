@@ -5,6 +5,8 @@ from croblink import *
 from math import *
 import xml.etree.ElementTree as ET
 
+import random
+
 
 #import keyboard #!DELETE
 
@@ -41,6 +43,7 @@ class MyRob(CRobLinkAngs):
             # (846,398): set{(856,400,270, 4)},
             # }
         }
+        random.seed(127)
 
 
     # In this map the center of cell (i,j), (i in 0..6, j in 0..13) is mapped to labMap[i*2][j*2].
@@ -64,7 +67,7 @@ class MyRob(CRobLinkAngs):
             self.readSensors()
 
             if self.measures.endLed:
-                print(self.rob_name + " exiting")
+                print(self.robName + " exiting")
                 quit()
 
             if state == 'stop' and self.measures.start:
@@ -392,8 +395,16 @@ class MyRob(CRobLinkAngs):
             #    #print(self.dijkstra_algorithm((self.round_positions(self.measures.x),self.round_positions(self.measures.y)),(x,y)))
 
 
+            ran = None
+            if left == 0 and right == 0:
+                ran = random.random()
+                if ran <= 0.6:
+                    print('left')
+                else:
+                    print('right')
 
-            if (left == 1 ) or (left==0 and right==None and front==None)  : ##cruzamento
+
+            if (left == 1 ) or (left==0 and right==None and front==None) or (ran!=None and ran <= 0.6) : ##cruzamento
                 self.right=0
                 self.counter+=1
                 #guardar a ultima direçao do robô
@@ -404,7 +415,7 @@ class MyRob(CRobLinkAngs):
                 self.check_intersections('left')
 
             #( right == 1 ) or (right==0 and left==None)
-            elif (right == 1 ) or (right==0 and front==None) : ##cruzamento
+            elif (right == 1 ) or (right==0 and front==None) or (ran!=None and ran > 0.6) : ##cruzamento
                 self.right=1
                 self.counter+=1
                 #guardar a ultima direçao do robô

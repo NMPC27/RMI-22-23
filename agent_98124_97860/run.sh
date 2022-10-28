@@ -39,12 +39,12 @@ case $challenge in
         ;;
     2)
         # how to call agent for challenge 2
-        python3 mainRob2.py -h "$host" -p "$pos" -r "$robname" -f "$outfile"
+        python3 mainRob2.py -h "$host" -p "$pos" -r "$robname"
         mv mapa.txt $outfile.map             # if needed
         ;;
     3)
         # how to call agent for challenge 3
-        python3 mainRob3.py -h "$host" -p "$pos" -r "$robname" -f "$outfile"
+        python3 mainRob3.py -h "$host" -p "$pos" -r "$robname"
         mv plan.txt $outfile.path           # if needed
         ;;
 esac
