@@ -1,85 +1,127 @@
 
-# CiberRato Robot Simulation Environment <br/> Universidade de Aveiro / IEETA 
+#  CiberRato Robot Simulation – RMI Assignment 1
 
-## Information
+This project is based on the **CiberRato Robot Simulation Environment** developed at the University of Aveiro.  
+It simulates autonomous robot agents navigating mazes, solving tasks such as control, mapping, and planning.
 
-CiberRato Robot Simulation Environment simulates the movement
-of robots inside a labyrinth.  Robots objective is to go from their
-starting position to beacon area and then return to their start position.
+Our implementation was developed as part of **RMI – Assignment 1** and consists of three main challenges:
 
-The MicroRato competition
-[http://microrato.ua.pt/], held annually at Aveiro University, 
-uses these these tools for its Explorer league.
+----------
 
-## Contents
+##  Challenges
 
-* simulator -           The simulator source code
-* Viewer -              The Visualizer source code
-* logplayer -           The logplayer source code
-* GUISample -           Graphical robot agent (C++) source code
-* robsample -           robot agent (C) source code
-* jClient -             robot agent (Java) source code
-* pClient -             robot agent (Python) source code
-* Labs -                examples of labyrinths used in previous competitions
-* startAll -            script that runs the simulator, the visualizer and 5 GUISamples
-* startSimViewer -      script that runs the simulator and the Viewer
+###  Control Challenge
 
-## Install
+-   **Goal:** Make the robot follow a path using only the **line sensor**.
+    
+-   **Approach:** Implemented a **purely reactive agent** that reads sensor data and makes decisions conditionally (e.g., turn left/right depending on line sensor input).
+    
 
-The source code was compiled with gcc/g++ - Gnu Project C/C++ Compiler
-(gcc version  9.3.0) using the Qt libraries (release 5.12.8) on Ubuntu 20.04.
+----------
 
-It is required to have the development version of gcc/g++, cmake, Qt libraries
-release 5.x installed in the system prior to compilation.
-On Ubuntu 20.04 run the following:
-```bash
-sudo apt-get install build-essential cmake qt5-default qtmultimedia5-dev
-```
+###  Mapping Challenge
 
-Then in the repository base dir, execute:
-```bash
-mkdir build
-cd build
+-   **Goal:** Explore an **unknown maze** and build its map using the **line sensor, GPS, and compass**.
+    
+-   **Approach:**
+    
+    -   Created a `Vertice` class to represent intersections (with coordinates and adjacency data).
+        
+    -   Implemented **intersection detection** and updated an adjacency dictionary.
+        
+    -   Used **wandering logic** (checking left, right, front) and turning strategies when no line was detected.
+        
+    -   Stored the explored graph in a matrix structure for later use.
+        
+
+----------
+
+###  Planning Challenge
+
+-   **Goal:** Locate multiple **target spots** in the maze and compute the **shortest closed path** visiting all of them, starting and ending at the robot’s initial position.
+    
+-   **Approach:**
+    
+    -   Extended the mapping code to include **target intersections**.
+        
+    -   Implemented a **cost calculation function** for paths.
+        
+    -   Used **Dijkstra’s algorithm** and path cost evaluation across all permutations of target orders.
+        
+    -   Exported the shortest path using a function that writes robot positions to a file every 2 units.
+        
+
+----------
+
+##  Repository Contents
+
+-   `simulator/` – CiberRato simulator source code
+    
+-   `viewer/` – Visualization tool
+    
+-   `logplayer/` – Log playback utility
+    
+-   `GUISample/` – Graphical robot agent (C++)
+    
+-   `robsample/` – Robot agent (C)
+    
+-   `jClient/` – Robot agent (Java)
+    
+-   `pClient/` – Robot agent (Python)
+    
+-   `Labs/` – Example labyrinths from past competitions
+    
+-   `startAll` – Script to run simulator, visualizer, and 5 GUI samples
+    
+-   `startSimViewer` – Script to run simulator and viewer
+    
+-   `rmi_assignment/` – Our implementation for the three challenges
+    
+
+----------
+
+##  Installation
+
+The project was developed and tested on **Ubuntu 20.04** with:
+
+-   **gcc/g++ 9.3.0**
+    
+-   **Qt 5.12.8**
+    
+-   **CMake**
+    
+
+### Install dependencies:
+
+`sudo apt-get install build-essential cmake qt5-default qtmultimedia5-dev` 
+
+### Build:
+
+`mkdir build cd build
 cmake ..
-make
-```
+make` 
 
-To run the simulator, Viewer and C++ agent, execute (at the repository base dir):
-```bash
-./startAll
-```
+----------
 
+##  Running the Simulation
 
-## Authors
+To launch the simulator, viewer, and sample C++ agent:
 
-* Nuno Lau,
-  University of Aveiro,
-  nunolau@ua.pt
+`./startAll` 
 
-* Artur C. Pereira,
-  University of Aveiro,
-  artur@ua.pt
+Or, just simulator + viewer:
 
-* Andreia Melo,
-  University of Aveiro,
-  abmelo@criticalsoftware.com
+`./startSimViewer` 
 
-* Antonio Neves,
-  University of Aveiro,
-  an@ua.pt
+----------
 
-* Joao Figueiredo,
-  University of Aveiro
-  joao.figueiredo@ieeta.pt
+##  Authors
+-   **Nuno Cunha** (98124)
 
-* Miguel Rodrigues,
-  University of Aveiro,
-  miguel.rodrigues@ua.pt
+-   **Pedro Lima** (97860)
+    
 
-* Eurico Pedrosa,
-  University of Aveiro,
-  efp@ua.pt
+    
 
- Copyright (C) 2001-2022 Universidade de Aveiro
-
-
+Based on work by:  
+Nuno Lau, Artur C. Pereira, Andreia Melo, António Neves, João Figueiredo, Miguel Rodrigues, Eurico Pedrosa (University of Aveiro / IEETA)
